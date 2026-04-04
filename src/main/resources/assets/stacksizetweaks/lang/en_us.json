@@ -6,7 +6,7 @@
   "text.config.stacksizetweaks.section.Overrides": "Item Stack Size Overrides",
 
   "text.config.stacksizetweaks.option.useCustomFont": "Use Smaller Font",
-  "text.config.stacksizetweaks.option.useCustomFont.tooltip": "Use a smaller custom font for readability (Only in inventory)",
+  "text.config.stacksizetweaks.option.useCustomFont.tooltip": "Use a smaller custom font for better readability (Used only in the inventory)",
 
   "text.config.stacksizetweaks.option.shortenItemAmounts": "Shorten Item Amounts",
   "text.config.stacksizetweaks.option.shortenItemAmounts.tooltip": "Make item amounts shorter (e.g. 0.3B instead of 300M",
@@ -31,16 +31,13 @@
   "text.config.stacksizetweaks.option.potionStackLimit": "Potion Stack Limit",
   "text.config.stacksizetweaks.option.potionStackLimit.tooltip": "Maximum stack size for potions",
 
+  "text.config.stacksizetweaks.option.enchantedBookStackLimit": "Enchanted Book Stack Limit",
+  "text.config.stacksizetweaks.option.enchantedBookStackLimit.tooltip": "Maximum stack size for enchanted books",
+
   "text.config.stacksizetweaks.option.nonStackableStackLimit": "Non-Stackable Limit",
   "text.config.stacksizetweaks.option.nonStackableStackLimit.tooltip": "Stack size for normally non-stackable items",
 
 
-  "text.config.stacksizetweaks.category.overrides": "Override Individual Items",
-  "text.config.stacksizetweaks.category.overrides.tooltip": "Keep Ids and Stack Sizes in the correct order in both lists!",
-
-  "text.config.stacksizetweaks.option.overrides.overrideIds": "Overwrite Item Ids",
-  "text.config.stacksizetweaks.option.overrides.overrideIds.tooltip": "Example: minecraft:stone or minecraft:totem_of_undying",
-
-  "text.config.stacksizetweaks.option.overrides.overrideValues": "Overwrite Item Sizes",
-  "text.config.stacksizetweaks.option.overrides.overrideValues.tooltip": "Max Stack Size for listed items."
+  "text.config.stacksizetweaks.option.overrides": "Override Items",
+  "text.config.stacksizetweaks.option.overrides.tooltip": "Format: minecraft:totem_of_undying: 5"
 }

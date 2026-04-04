@@ -4,6 +4,7 @@
   "package": "me.timbas.stacksizetweaks.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AnvilMenuMixin",
     "ContainerMixin",
     "ContainersMixin",
     "ItemEntityMixin",
