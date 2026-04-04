@@ -22,7 +22,6 @@ public class StackSizeTweaksConfigModel {
     public int stewStackLimit = 32;
     public int potionStackLimit = 16;
     public int nonStackableStackLimit = 1;
-    public int bundleSize = 512;
 
     @SectionHeader("Overrides")
     @Nest
