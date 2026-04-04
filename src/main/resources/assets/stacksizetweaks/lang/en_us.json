@@ -1,0 +1,46 @@
+{
+  "text.config.inventory_tweaks.title": "Inventory Tweaks",
+
+  "text.config.inventory_tweaks.section.Rendering": "Font and Rendering",
+  "text.config.inventory_tweaks.section.StackLimits": "Item Stack Size Limits",
+  "text.config.inventory_tweaks.section.Overrides": "Item Stack Size Overrides",
+
+  "text.config.inventory_tweaks.option.useCustomFont": "Use Smaller Font",
+  "text.config.inventory_tweaks.option.useCustomFont.tooltip": "Use a smaller custom font for readability (Only in inventory)",
+
+  "text.config.inventory_tweaks.option.shortenItemAmounts": "Shorten Item Amounts",
+  "text.config.inventory_tweaks.option.shortenItemAmounts.tooltip": "Make item amounts shorter (e.g. 0.3B instead of 300M",
+
+
+
+  "text.config.inventory_tweaks.option.itemStackLimit": "Item Stack Limit",
+  "text.config.inventory_tweaks.option.itemStackLimit.tooltip": "Maximum stack size for regular items",
+
+  "text.config.inventory_tweaks.option.blockStackLimit": "Block Stack Limit",
+  "text.config.inventory_tweaks.option.blockStackLimit.tooltip": "Maximum stack size for blocks",
+
+  "text.config.inventory_tweaks.option.foodStackLimit": "Food Stack Limit",
+  "text.config.inventory_tweaks.option.foodStackLimit.tooltip": "Maximum stack size for food items",
+
+  "text.config.inventory_tweaks.option.lowStackLimit": "Low Stack Limit",
+  "text.config.inventory_tweaks.option.lowStackLimit.tooltip": "Stack size for items that normally stack to 16",
+
+  "text.config.inventory_tweaks.option.stewStackLimit": "Stew Stack Limit",
+  "text.config.inventory_tweaks.option.stewStackLimit.tooltip": "Maximum stack size for stews",
+
+  "text.config.inventory_tweaks.option.potionStackLimit": "Potion Stack Limit",
+  "text.config.inventory_tweaks.option.potionStackLimit.tooltip": "Maximum stack size for potions",
+
+  "text.config.inventory_tweaks.option.nonStackableStackLimit": "Non-Stackable Limit",
+  "text.config.inventory_tweaks.option.nonStackableStackLimit.tooltip": "Stack size for normally non-stackable items",
+
+
+  "text.config.inventory_tweaks.category.overrides": "Override Individual Items",
+  "text.config.inventory_tweaks.category.overrides.tooltip": "Keep Ids and Stack Sizes in the correct order in both lists!",
+
+  "text.config.inventory_tweaks.option.overrides.overrideIds": "Overwrite Item Ids",
+  "text.config.inventory_tweaks.option.overrides.overrideIds.tooltip": "Example: minecraft:stone or minecraft:totem_of_undying",
+
+  "text.config.inventory_tweaks.option.overrides.overrideValues": "Overwrite Item Sizes",
+  "text.config.inventory_tweaks.option.overrides.overrideValues.tooltip": "Max Stack Size for listed items."
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "stacksizetweaks",
+  "version": "${version}",
+  "name": "Stack Size Tweaks",
+  "description": "Minecraft mod to change default stack sizes",
+  "authors": [],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/stacksizetweaks/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.timbas.stacksizetweaks.client.StackSizeTweaksClient"
+    ],
+    "main": [
+      "me.timbas.stacksizetweaks.StackSizeTweaks"
+    ]
+  },
+  "mixins": [
+    "stacksizetweaks.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
