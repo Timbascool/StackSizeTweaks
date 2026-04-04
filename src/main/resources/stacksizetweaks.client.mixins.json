@@ -1,17 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.timbas.stacksizetweaks.mixin",
+  "package": "me.timbas.stacksizetweaks.client.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ContainerMixin",
-    "ContainersMixin",
-    "ItemEntityMixin",
-    "ItemStackCodecMixin",
-    "ItemStackMixin",
-    "SlotMixin"
   ],
   "client": [
+    "ItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

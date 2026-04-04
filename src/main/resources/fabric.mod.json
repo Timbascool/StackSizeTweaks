@@ -18,7 +18,8 @@
     ]
   },
   "mixins": [
-    "stacksizetweaks.mixins.json"
+    "stacksizetweaks.mixins.json",
+    "stacksizetweaks.client.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",

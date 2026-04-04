@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 
-// Make containers drop items with higher stack sizes
+// Increase stack size containers drop to avoid lag
 @Mixin(Containers.class)
 public class ContainersMixin {
     @ModifyExpressionValue(
