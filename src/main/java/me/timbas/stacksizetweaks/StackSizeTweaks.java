@@ -2,7 +2,11 @@ package me.timbas.stacksizetweaks;
 
 import net.fabricmc.api.ModInitializer;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import net.minecraft.world.item.Items;
+=======
+import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
+>>>>>>> Stashed changes
 =======
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 >>>>>>> Stashed changes
@@ -33,6 +37,9 @@ public class StackSizeTweaks implements ModInitializer {
 =======
         StackSizeHelper.mapFromOverrides(CONFIG.overrides());
         StackSizeHelper.ChangeAllStackSizes();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
         CONFIG.optionForKey(CONFIG.keys.overrides).observe(value -> {
