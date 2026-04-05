@@ -1,6 +1,7 @@
 package me.timbas.stacksizetweaks;
 
 import me.timbas.stacksizetweaks.StackSizeTweaksConfig;
+import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -87,5 +88,14 @@ public class StackSizeHelper {
         }
 
         return map;
+    }
+
+
+
+    public static void ChangeAllStackSizes()
+    {
+        DefaultItemComponentEvents.MODIFY.register(modifyContext -> {
+            modifyContext.modify(item -> true, (builder, item) -> builder.set(DataComponents.MAX_STACK_SIZE,GetMaxStackSize(item)));
+        });
     }
 }

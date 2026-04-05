@@ -1,4 +1,4 @@
-package me.timbas.stacksizetweaks.mixin;
+package me.timbas.stacksizetweaks.mixin.fixes;
 
 
 import net.minecraft.world.Container;
@@ -9,6 +9,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+// Make anvils only consume one enchanted book from stack.
+// Doesn't apply if in first input slot but xp cost is too high in survival anyway
 @Mixin(AnvilMenu.class)
 public class AnvilMenuMixin {
     @Redirect(

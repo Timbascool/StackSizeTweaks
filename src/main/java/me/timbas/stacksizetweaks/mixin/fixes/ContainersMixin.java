@@ -1,4 +1,4 @@
-package me.timbas.stacksizetweaks.mixin;
+package me.timbas.stacksizetweaks.mixin.fixes;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.world.Containers;

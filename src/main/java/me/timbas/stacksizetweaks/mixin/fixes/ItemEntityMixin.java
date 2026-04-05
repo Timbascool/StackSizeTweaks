@@ -1,4 +1,4 @@
-package me.timbas.stacksizetweaks.mixin;
+package me.timbas.stacksizetweaks.mixin.fixes;
 
 import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+// Make items combine together into higher stack sizes
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin {
     @Shadow
