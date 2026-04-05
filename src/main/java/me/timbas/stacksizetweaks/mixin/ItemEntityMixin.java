@@ -14,7 +14,7 @@ public abstract class ItemEntityMixin {
     public abstract ItemStack getItem();
 
     @ModifyConstant(method = "merge(Lnet/minecraft/world/entity/item/ItemEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)V",
-            constant = @Constant(intValue = 64))
+            constant = @Constant())
     private static int increaseMergeStackLimit(int value) {
         return StackSizeTweaks.MAX_STACK_SIZE;
     }

@@ -1,6 +1,7 @@
 package me.timbas.stacksizetweaks;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.world.item.Items;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +24,7 @@ public class StackSizeTweaks implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("Initialized Stack Size Tweaks!");
 
-        StackSizeHelper.mapFromOverrides(CONFIG.overrides());
+        StackSizeHelper.overridesMap = StackSizeHelper.mapFromOverrides(CONFIG.overrides());
 
         CONFIG.optionForKey(CONFIG.keys.overrides).observe(value ->
                 StackSizeHelper.overridesMap = StackSizeHelper.mapFromOverrides((List<String>) value)

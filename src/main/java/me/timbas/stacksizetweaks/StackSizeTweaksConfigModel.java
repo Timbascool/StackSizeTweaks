@@ -27,7 +27,6 @@ public class StackSizeTweaksConfigModel {
     @SectionHeader("Overrides")
     @Expanded
     public List<String> overrides = new ArrayList<>(List.of(
-            "minecraft:enchanted_book: 16",
             "minecraft:example_item: 64"
     ));
 }
