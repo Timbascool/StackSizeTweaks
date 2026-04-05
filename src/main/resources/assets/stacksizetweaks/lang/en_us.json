@@ -39,5 +39,5 @@
 
 
   "text.config.stacksizetweaks.option.overrides": "Override Items",
-  "text.config.stacksizetweaks.option.overrides.tooltip": "Format: minecraft:totem_of_undying: 5"
+  "text.config.stacksizetweaks.option.overrides.tooltip": "Example: minecraft:totem_of_undying: 5"
 }
