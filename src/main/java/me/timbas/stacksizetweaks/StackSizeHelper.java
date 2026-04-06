@@ -1,6 +1,5 @@
 package me.timbas.stacksizetweaks;
 
-import me.timbas.stacksizetweaks.StackSizeTweaksConfig;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -8,8 +7,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.component.UseRemainder;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,46 +23,54 @@ public class StackSizeHelper {
 
 
         // Handle overrides
-
         Identifier id = BuiltInRegistries.ITEM.getKey(item);
 
         if (overridesMap.containsKey(id.toString())) {
             return overridesMap.get(id.toString());
         }
 
-
         // Handle manual overrides
-
         if (item == Items.REDSTONE || item == Items.RESIN_CLUMP || item == Items.STRING) {
             return StackSizeTweaks.CONFIG.itemStackLimit();
         }
 
         // Handle categories
-        if (item instanceof PotionItem) {
+        if (item.components().has(DataComponents.POTION_CONTENTS))
+        {
             return StackSizeTweaks.CONFIG.potionStackLimit();
         }
 
+        if (item.components().has(DataComponents.BUCKET_ENTITY_DATA) || item == Items.LAVA_BUCKET || item == Items.WATER_BUCKET || item == Items.MILK_BUCKET || item == Items.POWDER_SNOW_BUCKET)
+        {
+            return StackSizeTweaks.CONFIG.bucketStackSize();
+        }
+
+        if (item.components().has(DataComponents.JUKEBOX_PLAYABLE))
+        {
+            return StackSizeTweaks.CONFIG.discStackSize();
+        }
+
         UseRemainder useRemainder = item.components().get(DataComponents.USE_REMAINDER);
-        if (useRemainder != null) {
-            if (useRemainder.convertInto().getItem() == Items.BOWL) {
-                return StackSizeTweaks.CONFIG.stewStackLimit();
-            }
+        if (useRemainder != null && useRemainder.convertInto().is(Items.BOWL))
+        {
+            return StackSizeTweaks.CONFIG.stewStackLimit();
         }
 
         if (item.components().has(DataComponents.FOOD)) {
             return StackSizeTweaks.CONFIG.foodStackLimit();
         }
 
-        if (item == Items.ENCHANTED_BOOK)
-        {
+        if (item == Items.ENCHANTED_BOOK) {
             return StackSizeTweaks.CONFIG.enchantedBookStackLimit();
         }
 
-        if (item.getDefaultMaxStackSize() == 1) {
+        Integer maxStackSize = item.components().get(DataComponents.MAX_STACK_SIZE);
+        if (maxStackSize != null && maxStackSize == 1) {
             return StackSizeTweaks.CONFIG.nonStackableStackLimit();
         }
 
-        if (item.getDefaultMaxStackSize() == 16) {
+        maxStackSize = item.components().get(DataComponents.MAX_STACK_SIZE);
+        if (maxStackSize != null && maxStackSize == 16) {
             return StackSizeTweaks.CONFIG.lowStackLimit();
         }
 
@@ -73,16 +80,19 @@ public class StackSizeHelper {
 
         return StackSizeTweaks.CONFIG.itemStackLimit();
     }
+
+
+    // Kinda unnecessary after switching to default item components
     public static Map<String, Integer> mapFromOverrides(List<String> overrides) {
 
         Map<String, Integer> map = new HashMap<>();
 
         for (String entry : overrides) {
-            String[] parts = entry.split(":");
-            if (parts.length < 3) continue;
+            String[] parts = entry.split("=");
+            if (parts.length < 2) continue;
 
-            String id = parts[0] + ":" + parts[1];
-            int value = Integer.parseInt(parts[2].trim());
+            String id = parts[0];
+            int value = Integer.parseInt(parts[1].trim());
 
             map.put(id, value);
         }
@@ -91,11 +101,9 @@ public class StackSizeHelper {
     }
 
 
-
-    public static void ChangeAllStackSizes()
-    {
+    public static void ChangeAllStackSizes() {
         DefaultItemComponentEvents.MODIFY.register(modifyContext -> {
-            modifyContext.modify(item -> true, (builder, item) -> builder.set(DataComponents.MAX_STACK_SIZE,GetMaxStackSize(item)));
+            modifyContext.modify(item -> true, (builder, item) -> builder.set(DataComponents.MAX_STACK_SIZE, GetMaxStackSize(item)));
         });
     }
 }

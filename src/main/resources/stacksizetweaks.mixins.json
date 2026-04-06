@@ -4,11 +4,13 @@
   "package": "me.timbas.stacksizetweaks.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "fixes.AnvilMenuMixin",
     "ContainerMixin",
+    "ItemStackCodecMixin",
+    "DataComponentsMixin",
+    "fixes.AnvilMenuMixin",
     "fixes.ContainersMixin",
     "fixes.ItemEntityMixin",
-    "ItemStackCodecMixin"
+    "fixes.SolidBucketItemMixin"
   ],
   "client": [
   ],

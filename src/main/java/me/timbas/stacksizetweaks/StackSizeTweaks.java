@@ -1,22 +1,13 @@
 package me.timbas.stacksizetweaks;
 
+import io.wispforest.owo.config.Option;
 import net.fabricmc.api.ModInitializer;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-import net.minecraft.world.item.Items;
-=======
-import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
->>>>>>> Stashed changes
-=======
-import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
->>>>>>> Stashed changes
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.List;
 
 import me.timbas.stacksizetweaks.StackSizeTweaksConfig;
 
-import java.util.Collection;
-import java.util.List;
 
 public class StackSizeTweaks implements ModInitializer {
 
@@ -32,21 +23,20 @@ public class StackSizeTweaks implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("Initialized Stack Size Tweaks!");
 
-<<<<<<< Updated upstream
         StackSizeHelper.overridesMap = StackSizeHelper.mapFromOverrides(CONFIG.overrides());
-=======
+
         StackSizeHelper.mapFromOverrides(CONFIG.overrides());
         StackSizeHelper.ChangeAllStackSizes();
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
-        CONFIG.optionForKey(CONFIG.keys.overrides).observe(value -> {
-                    StackSizeHelper.overridesMap = StackSizeHelper.mapFromOverrides((List<String>) value);
-                    StackSizeHelper.ChangeAllStackSizes();
-                }
-        );
+        Option<List<String>> option = CONFIG.optionForKey(CONFIG.keys.overrides);
+
+        if (option != null) {
+            option.observe(value -> {
+                        StackSizeHelper.overridesMap = StackSizeHelper.mapFromOverrides(value);
+                        StackSizeHelper.ChangeAllStackSizes();
+                    }
+            );
+        }
 
     }
 

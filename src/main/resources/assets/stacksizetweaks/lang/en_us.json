@@ -2,7 +2,7 @@
   "text.config.stacksizetweaks.title": "Inventory Tweaks",
 
   "text.config.stacksizetweaks.section.Rendering": "Font and Rendering",
-  "text.config.stacksizetweaks.section.StackLimits": "Item Stack Size Limits",
+  "text.config.stacksizetweaks.section.Categories": "Category Stack Size Limits",
   "text.config.stacksizetweaks.section.Overrides": "Item Stack Size Overrides",
 
   "text.config.stacksizetweaks.option.useCustomFont": "Use Smaller Font",
@@ -34,10 +34,16 @@
   "text.config.stacksizetweaks.option.enchantedBookStackLimit": "Enchanted Book Stack Limit",
   "text.config.stacksizetweaks.option.enchantedBookStackLimit.tooltip": "Maximum stack size for enchanted books",
 
+  "text.config.stacksizetweaks.option.bucketStackSize": "Filled Bucket Stack Limit",
+  "text.config.stacksizetweaks.option.bucketStackSize.tooltip": "Maximum stack size for filled bucket items",
+
+  "text.config.stacksizetweaks.option.discStackSize": "Music Disc Stack Limit",
+  "text.config.stacksizetweaks.option.discStackSize.tooltip": "Maximum stack size for music discs",
+
   "text.config.stacksizetweaks.option.nonStackableStackLimit": "Non-Stackable Limit",
   "text.config.stacksizetweaks.option.nonStackableStackLimit.tooltip": "Stack size for normally non-stackable items",
 
 
   "text.config.stacksizetweaks.option.overrides": "Override Items",
-  "text.config.stacksizetweaks.option.overrides.tooltip": "Example: minecraft:totem_of_undying: 5"
+  "text.config.stacksizetweaks.option.overrides.tooltip": "Example: minecraft:totem_of_undying=5"
 }

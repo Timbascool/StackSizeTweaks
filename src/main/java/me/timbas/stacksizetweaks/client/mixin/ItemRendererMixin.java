@@ -18,14 +18,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiGraphics.class)
 public class ItemRendererMixin {
 
-
-    @Unique
-    private static final FontDescription CUSTOM_FONT =
-            new FontDescription.Resource(
-                    Identifier.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "inventory_font")
-            );
-
-
     @Inject(method = "renderItemCount", at = @At("HEAD"), cancellable = true)
     private void changeItemCountText(Font font, ItemStack itemStack, int x, int y, @Nullable String text, CallbackInfo ci) {
         if (itemStack.getCount() != 1 || text != null) {
@@ -37,6 +29,12 @@ public class ItemRendererMixin {
 
         ci.cancel();
     }
+
+    @Unique
+    private static final FontDescription CUSTOM_FONT =
+            new FontDescription.Resource(
+                    Identifier.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "inventory_font")
+            );
 
     @Unique
     private static Component makeText(String text, boolean useCustomFont) {
