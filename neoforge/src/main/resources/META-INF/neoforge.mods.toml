@@ -1,0 +1,41 @@
+modLoader = "javafml"
+loaderVersion = "[10,)"
+license = "MIT"
+
+issueTrackerURL = "https://github.com/Timbascool/StackSizeTweaks/issues"
+
+[[mods]]
+modId = "stacksizetweaks"
+version = "${version}"
+displayName = "Stack Size Tweaks"
+authors = "Timbas"
+description = "Change default stack sizes of items"
+logoFile = "icon.png"
+
+[[dependencies.stacksizetweaks]]
+modId = "neoforge"
+type = "required"
+versionRange = "[${neoforge_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.stacksizetweaks]]
+modId = "minecraft"
+type = "required"
+versionRange = "[${min_minecraft_version},${max_minecraft_version}]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.stacksizetweaks]]
+modId = "cloth_config"
+type = "required"
+versionRange = "[${cloth_config_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+
+[[mixins]]
+config = "stacksizetweaks.mixins.json"
+
+[[mixins]]
+config = "stacksizetweaks.client.mixins.json"

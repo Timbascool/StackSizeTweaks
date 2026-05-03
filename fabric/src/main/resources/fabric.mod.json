@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "stacksizetweaks",
+  "version": "${version}",
+  "name": "Stack Size Tweaks",
+  "description": "Change default stack sizes of items",
+  "authors": [
+    "Timbas"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Timbascool/StackSizeTweaks",
+    "sources": "https://github.com/Timbascool/StackSizeTweaks",
+    "issues": "https://github.com/Timbascool/StackSizeTweaks/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/stacksizetweaks/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.timbas.fabric.stacksizetweaks.StackSizeTweaks"
+    ],
+    "modmenu": [
+      "me.timbas.stacksizetweaks.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "stacksizetweaks.mixins.json",
+    "stacksizetweaks.client.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "minecraft": ">=${min_minecraft_version} <=${max_minecraft_version}",
+    "fabric-api": ">=${fabric_api_version}",
+    "cloth-config": ">=${cloth_config_version}"
+  }
+}
