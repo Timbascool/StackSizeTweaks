@@ -22,16 +22,16 @@ side = "BOTH"
 [[dependencies.stacksizetweaks]]
 modId = "minecraft"
 type = "required"
-versionRange = "[${min_minecraft_version},${max_minecraft_version}]"
+versionRange = "[${minecraft_version},)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.stacksizetweaks]]
-modId = "cloth_config"
-type = "required"
-versionRange = "[${cloth_config_version},)"
+modId = "yet_another_config_lib_v3"
+mandatory = true
+versionRange = "[yacl_version,)"
 ordering = "NONE"
-side = "BOTH"
+side = "CLIENT"
 
 
 [[mixins]]

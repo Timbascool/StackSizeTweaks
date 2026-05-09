@@ -78,6 +78,8 @@ public class StackSizeHelper {
             newStackSize = StackSizeTweaks.CONFIG.itemStackLimit;
         }
 
+        if (newStackSize == 0) return StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
+
         return Math.clamp(newStackSize, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
     }
 

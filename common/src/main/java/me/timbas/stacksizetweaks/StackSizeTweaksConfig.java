@@ -1,52 +1,67 @@
 package me.timbas.stacksizetweaks;
 
-import me.shedaniel.autoconfig.ConfigData;
-import me.shedaniel.autoconfig.annotation.Config;
-import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
+import com.google.gson.GsonBuilder;
+import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
+import dev.isxander.yacl3.config.v2.api.SerialEntry;
+import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.resources.Identifier;
+
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-@Config(name = StackSizeTweaks.MOD_ID)
-public class StackSizeTweaksConfig implements ConfigData {
+public class StackSizeTweaksConfig {
 
-    @ConfigEntry.Category("rendering")
+
+    public static final ConfigClassHandler<StackSizeTweaksConfig> HANDLER =
+            ConfigClassHandler.createBuilder(StackSizeTweaksConfig.class)
+                    .id(Identifier.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "config"))
+                    .serializer(config -> GsonConfigSerializerBuilder.create(config)
+                            .setPath(Path.of(".", "config", "stacksizetweaks.json5").normalize())
+                            .appendGsonBuilder(GsonBuilder::setPrettyPrinting)
+                            .setJson5(true)
+                            .build())
+                    .build();
+
+    @SerialEntry
     public boolean useCustomFont = true;
 
-    @ConfigEntry.Category("rendering")
+    @SerialEntry
     public boolean shortenItemAmounts = true;
 
-    @ConfigEntry.Category("categories")
+    @SerialEntry
     public int itemStackLimit = 512;
 
-    @ConfigEntry.Category("categories")
+    @SerialEntry
     public int blockStackLimit = 256;
 
-    @ConfigEntry.Category("categories")
+    @SerialEntry
     public int foodStackLimit = 128;
 
-    @ConfigEntry.Category("categories")
+    @SerialEntry
     public int lowStackLimit = 64;
 
-    @ConfigEntry.Category("categories")
+    @SerialEntry
     public int stewStackLimit = 32;
 
-    @ConfigEntry.Category("categories")
+    @SerialEntry
     public int potionStackLimit = 16;
 
-    @ConfigEntry.Category("categories")
+    @SerialEntry
     public int bucketStackSize = 16;
 
-    @ConfigEntry.Category("categories")
+    @SerialEntry
     public int discStackSize = 16;
 
-    @ConfigEntry.Category("categories")
+    @SerialEntry
     public int enchantedBookStackLimit = 16;
 
-    @ConfigEntry.Category("categories")
+    @SerialEntry
     public int nonStackableStackLimit = 1;
 
-    @ConfigEntry.Category("overrides")
+    @SerialEntry
     public List<String> overrides = new ArrayList<>(List.of(
             "minecraft:example_item=64"
     ));

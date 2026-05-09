@@ -1,49 +1,51 @@
 {
-  "text.config.stacksizetweaks.title": "Inventory Tweaks",
+  "config.stacksizetweaks.title": "Stack Size Tweaks",
 
-  "text.config.stacksizetweaks.section.Rendering": "Font and Rendering",
-  "text.config.stacksizetweaks.section.Categories": "Category Stack Size Limits",
-  "text.config.stacksizetweaks.section.Overrides": "Item Stack Size Overrides",
+  "config.stacksizetweaks.category.general": "Stack Size Tweaks",
 
-  "text.config.stacksizetweaks.option.useCustomFont": "Use Smaller Font",
-  "text.config.stacksizetweaks.option.useCustomFont.tooltip": "Use a smaller custom font for better readability (Used only in the inventory)",
+  "config.stacksizetweaks.label.info": "Change the default stack size of items.\n\nUse 0 for max stack size (2,100,000,000).\n\nChanges to stack sizes require a restart to take effect.",
 
-  "text.config.stacksizetweaks.option.shortenItemAmounts": "Shorten Item Amounts",
-  "text.config.stacksizetweaks.option.shortenItemAmounts.tooltip": "Make item amounts shorter (e.g. 0.3B instead of 300M",
+  "config.stacksizetweaks.group.item_groups": "Item Groups",
+  "config.stacksizetweaks.group.item_groups.description": "Max stack sizes for different item groups",
 
+  "config.stacksizetweaks.item_stack_limit": "Item Stack Limit",
+  "config.stacksizetweaks.item_stack_limit.description": "Maximum stack size for regular items.",
 
+  "config.stacksizetweaks.block_stack_limit": "Block Stack Limit",
+  "config.stacksizetweaks.block_stack_limit.description": "Maximum stack size for blocks.",
 
-  "text.config.stacksizetweaks.option.itemStackLimit": "Item Stack Limit",
-  "text.config.stacksizetweaks.option.itemStackLimit.tooltip": "Maximum stack size for regular items",
+  "config.stacksizetweaks.food_stack_limit": "Food Stack Limit",
+  "config.stacksizetweaks.food_stack_limit.description": "Maximum stack size for food items.",
 
-  "text.config.stacksizetweaks.option.blockStackLimit": "Block Stack Limit",
-  "text.config.stacksizetweaks.option.blockStackLimit.tooltip": "Maximum stack size for blocks",
+  "config.stacksizetweaks.low_stack_limit": "Low Stack Limit",
+  "config.stacksizetweaks.low_stack_limit.description": "Maximum stack size for items that normally stack up to 16.",
 
-  "text.config.stacksizetweaks.option.foodStackLimit": "Food Stack Limit",
-  "text.config.stacksizetweaks.option.foodStackLimit.tooltip": "Maximum stack size for food items",
+  "config.stacksizetweaks.stew_stack_limit": "Stew Stack Limit",
+  "config.stacksizetweaks.stew_stack_limit.description": "Maximum stack size for stews and soups (foods that use a bowl).",
 
-  "text.config.stacksizetweaks.option.lowStackLimit": "Low Stack Limit",
-  "text.config.stacksizetweaks.option.lowStackLimit.tooltip": "Stack size for items that normally stack to 16",
+  "config.stacksizetweaks.potion_stack_limit": "Potion Stack Limit",
+  "config.stacksizetweaks.potion_stack_limit.description": "Maximum stack size for regular, splash, and lingering potions.",
 
-  "text.config.stacksizetweaks.option.stewStackLimit": "Stew Stack Limit",
-  "text.config.stacksizetweaks.option.stewStackLimit.tooltip": "Maximum stack size for stews",
+  "config.stacksizetweaks.bucket_stack_limit": "Bucket Stack Limit",
+  "config.stacksizetweaks.bucket_stack_limit.description": "Maximum stack size for bucket items.",
 
-  "text.config.stacksizetweaks.option.potionStackLimit": "Potion Stack Limit",
-  "text.config.stacksizetweaks.option.potionStackLimit.tooltip": "Maximum stack size for potions",
+  "config.stacksizetweaks.disc_stack_limit": "Disc Stack Limit",
+  "config.stacksizetweaks.disc_stack_limit.description": "Maximum stack size for music discs.",
 
-  "text.config.stacksizetweaks.option.enchantedBookStackLimit": "Enchanted Book Stack Limit",
-  "text.config.stacksizetweaks.option.enchantedBookStackLimit.tooltip": "Maximum stack size for enchanted books",
+  "config.stacksizetweaks.enchanted_book_stack_limit": "Enchanted Book Stack Limit",
+  "config.stacksizetweaks.enchanted_book_stack_limit.description": "Maximum stack size for enchanted books.",
 
-  "text.config.stacksizetweaks.option.bucketStackSize": "Filled Bucket Stack Limit",
-  "text.config.stacksizetweaks.option.bucketStackSize.tooltip": "Maximum stack size for filled bucket items",
+  "config.stacksizetweaks.non_stackable_stack_limit": "Unstackable Stack Limit",
+  "config.stacksizetweaks.non_stackable_stack_limit.description": "Maximum stack size for all items that don't stack normally. Will likely cause issues for some items.",
 
-  "text.config.stacksizetweaks.option.discStackSize": "Music Disc Stack Limit",
-  "text.config.stacksizetweaks.option.discStackSize.tooltip": "Maximum stack size for music discs",
+  "config.stacksizetweaks.overrides": "Overrides",
+  "config.stacksizetweaks.overrides.description": "Change stack sizes for specific items.\nFormat: minecraft:example_item=64",
 
-  "text.config.stacksizetweaks.option.nonStackableStackLimit": "Non-Stackable Limit",
-  "text.config.stacksizetweaks.option.nonStackableStackLimit.tooltip": "Stack size for normally non-stackable items",
+  "config.stacksizetweaks.font_formatting": "Font and Formatting",
 
+  "config.stacksizetweaks.use_custom_font": "Use Custom Font",
+  "config.stacksizetweaks.use_custom_font.description": "Use a smaller custom font for item counts to reduce clutter.\"",
 
-  "text.config.stacksizetweaks.option.overrides": "Override Items",
-  "text.config.stacksizetweaks.option.overrides.tooltip": "Example: minecraft:totem_of_undying=5"
+  "config.stacksizetweaks.shorten_item_amounts": "Aggressive Formatting",
+  "config.stacksizetweaks.shorten_item_amounts.description": "Make item counts show up as short as possible i.e. 300M -> 0.3B, 123K -> 0.1M"
 }

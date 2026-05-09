@@ -81,7 +81,7 @@ public class ItemRendererMixin {
             return Math.round(rounded) + suffix;
         }
 
-        // If exact value dont show decimal
+        // If exact value don't show decimal
         if (rounded == (int) rounded) {
             return ((int) rounded) + suffix;
         }
