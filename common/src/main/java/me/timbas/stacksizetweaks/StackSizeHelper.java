@@ -4,7 +4,6 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.UseRemainder;
@@ -26,7 +25,7 @@ public class StackSizeHelper {
         // Handle overrides
         Identifier id = BuiltInRegistries.ITEM.getKey(item);
 
-        // UseRemainder useRemainder = item.components().get(DataComponents.USE_REMAINDER);
+        UseRemainder useRemainder = item.components().get(DataComponents.USE_REMAINDER);
         Integer maxStackSize = item.components().get(DataComponents.MAX_STACK_SIZE);
 
         if (overridesMap.containsKey(id.toString())) {
@@ -52,7 +51,7 @@ public class StackSizeHelper {
             newStackSize = StackSizeTweaks.CONFIG.discStackSize;
         }
         // Stews
-        else if (item instanceof BowlFoodItem) {
+        else if (useRemainder != null && useRemainder.convertInto().is(Items.BOWL)) {
             newStackSize = StackSizeTweaks.CONFIG.stewStackLimit;
         }
         // Foods
