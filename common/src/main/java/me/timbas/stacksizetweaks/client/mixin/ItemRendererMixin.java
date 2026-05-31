@@ -4,51 +4,41 @@ import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
 
 @Mixin(GuiGraphics.class)
-public class ItemRendererMixin {
+public abstract class ItemRendererMixin {
+    @Redirect(method = "renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Ljava/lang/String;IIIZ)I"))
+    private int redirectDrawString(GuiGraphics instance, Font arg, String string2, int i2, int j2, int k, boolean bl, Font font, ItemStack itemStack, int i, int j, String string) {
 
-    @Inject(method = "renderItemCount", at = @At("HEAD"), cancellable = true)
-    private void changeItemCountText(Font font, ItemStack itemStack, int i, int j, @Nullable String string, CallbackInfo ci) {
-        if (itemStack.getCount() != 1 || string != null) {
-            String newText = formatCount(itemStack.getCount(), StackSizeTweaks.CONFIG.shortenItemAmounts);
-            Component renderedText = makeText(newText, StackSizeTweaks.CONFIG.useCustomFont);
+        String newText = stacksizetweaks$formatCount(itemStack.getCount(), StackSizeTweaks.CONFIG.shortenItemAmounts);
+        Component component = stacksizetweaks$makeText(newText, StackSizeTweaks.CONFIG.useCustomFont);
 
-            ((GuiGraphics) (Object) this).drawString(font, renderedText, i + 17 - font.width(renderedText), j + 9, -1, true);
-        }
-
-        ci.cancel();
+        return instance.drawString(arg, component, i + 19 - 2 - font.width(component), j2, k, true);
     }
 
     @Unique
-    private static final FontDescription CUSTOM_FONT =
-            new FontDescription.Resource(
-                    Identifier.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "inventory_font")
-            );
+    private static final ResourceLocation CUSTOM_FONT = ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "inventory_font");
 
     @Unique
-    private static Component makeText(String text, boolean useCustomFont) {
+    private static Component stacksizetweaks$makeText(String text, boolean useCustomFont) {
 
         if (useCustomFont) {
-            return Component.literal(text)
-                    .withStyle(style -> style.withFont(CUSTOM_FONT));
+            return Component.literal(text).withStyle(style -> style.withFont(CUSTOM_FONT));
         } else {
             return Component.literal(text);
         }
     }
 
     @Unique
-    private static String formatCount(int count, boolean shortened) {
+    private static String stacksizetweaks$formatCount(int count, boolean shortened) {
 
         if (count < 1_000) {
             return Integer.toString(count);

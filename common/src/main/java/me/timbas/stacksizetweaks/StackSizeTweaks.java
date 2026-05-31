@@ -1,7 +1,10 @@
 package me.timbas.stacksizetweaks;
 
+import net.minecraft.client.Minecraft;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.awt.*;
 
 
 public final class StackSizeTweaks {
@@ -16,6 +19,5 @@ public final class StackSizeTweaks {
         StackSizeTweaksConfig.HANDLER.load();
         CONFIG = StackSizeTweaksConfig.HANDLER.instance();
         StackSizeHelper.overridesMap = StackSizeHelper.mapFromOverrides(CONFIG.overrides);
-
     }
 }
