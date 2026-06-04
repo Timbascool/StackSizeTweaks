@@ -1,16 +1,21 @@
 package me.timbas.stacksizetweaks.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.mojang.serialization.Codec;
 import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.util.ExtraCodecs;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.At;
 
 
-@Mixin(DataComponents.class)
+@Mixin(value = DataComponents.class, priority = 1)
 public class DataComponentsMixin {
-    @ModifyConstant(method = "method_58570", constant = @Constant(intValue = 99))
-    private static int increaseMaxStackSize(int original) {
-        return StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
+
+    @ModifyExpressionValue(method = "lambda$static$1", at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/util/ExtraCodecs;intRange(II)Lcom/mojang/serialization/Codec;"))
+    private static Codec<Integer> increaseMaxStackSize(Codec<Integer> original) {
+        return ExtraCodecs.intRange(1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
     }
 }

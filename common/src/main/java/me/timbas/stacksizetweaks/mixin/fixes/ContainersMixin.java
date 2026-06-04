@@ -17,7 +17,7 @@ public class ContainersMixin {
                     value = "INVOKE",
                     target = "Lnet/minecraft/util/RandomSource;nextInt(I)I")
     )
-    private static int modifyContainerDropAmount(int original, Level level, double d, double e, double f, ItemStack itemStack) {
+    private static int modifyContainerDropAmount(int original, Level level, double x, double y, double z, ItemStack itemStack) {
         float scale = (float) itemStack.getMaxStackSize() / 64;
 
         return (int) (original * scale);

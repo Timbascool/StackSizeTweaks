@@ -6,8 +6,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.UseRemainder;
-
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,19 +18,31 @@ public class StackSizeHelper {
 
     public static int getMaxStackSize(Item item) {
 
+        // Exceptions
+
+        // Item cannot have both durability and be stackable
+        if (item.components().has(DataComponents.MAX_DAMAGE))
+        {
+            return item.getDefaultMaxStackSize();
+        }
+
         int newStackSize;
 
         // Handle overrides
         Identifier id = BuiltInRegistries.ITEM.getKey(item);
 
-        UseRemainder useRemainder = item.components().get(DataComponents.USE_REMAINDER);
+        // var foodComponent = item.components().get(DataComponents.FOOD);
+
+        var useRemainder = item.components().get(DataComponents.USE_REMAINDER);
+        Item remainderItem = useRemainder == null ? null : useRemainder.convertInto().item().value();
+
         Integer maxStackSize = item.components().get(DataComponents.MAX_STACK_SIZE);
 
         if (overridesMap.containsKey(id.toString())) {
             newStackSize = overridesMap.get(id.toString());
         }
         // Handle manual overrides
-        else if (item == Items.REDSTONE || item == Items.RESIN_CLUMP || item == Items.STRING) {
+        else if (item == Items.REDSTONE || item == Items.STRING) {
             newStackSize = StackSizeTweaks.CONFIG.itemStackLimit;
         }
 
@@ -51,7 +61,7 @@ public class StackSizeHelper {
             newStackSize = StackSizeTweaks.CONFIG.discStackSize;
         }
         // Stews
-        else if (useRemainder != null && useRemainder.convertInto().is(Items.BOWL)) {
+        else if (remainderItem == Items.BOWL) {
             newStackSize = StackSizeTweaks.CONFIG.stewStackLimit;
         }
         // Foods
