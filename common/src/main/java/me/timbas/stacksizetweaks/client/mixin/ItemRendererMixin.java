@@ -5,7 +5,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FontDescription;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
@@ -33,7 +33,7 @@ public abstract class ItemRendererMixin {
     @Unique
     private static final FontDescription CUSTOM_FONT =
             new FontDescription.Resource(
-                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "inventory_font")
+                    Identifier.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "inventory_font")
             );
 
     @Unique
