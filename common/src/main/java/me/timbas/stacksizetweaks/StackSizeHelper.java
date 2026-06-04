@@ -32,9 +32,10 @@ public class StackSizeHelper {
         // Handle overrides
         ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
 
-        var foodComponent = item.components().get(DataComponents.FOOD);
+        // var foodComponent = item.components().get(DataComponents.FOOD);
 
-        ItemStack useRemainder = foodComponent == null ? ItemStack.EMPTY : foodComponent.usingConvertsTo().orElse(ItemStack.EMPTY);
+        var useRemainder = item.components().get(DataComponents.USE_REMAINDER);
+        ItemStack remainderItem = useRemainder == null ? ItemStack.EMPTY : useRemainder.convertInto();
 
         Integer maxStackSize = item.components().get(DataComponents.MAX_STACK_SIZE);
 
@@ -61,7 +62,7 @@ public class StackSizeHelper {
             newStackSize = StackSizeTweaks.CONFIG.discStackSize;
         }
         // Stews
-        else if (useRemainder.is(Items.BOWL)) {
+        else if (remainderItem.is(Items.BOWL)) {
             newStackSize = StackSizeTweaks.CONFIG.stewStackLimit;
         }
         // Foods
