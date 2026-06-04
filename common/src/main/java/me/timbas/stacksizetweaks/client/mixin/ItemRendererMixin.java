@@ -1,6 +1,5 @@
 package me.timbas.stacksizetweaks.client.mixin;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -17,9 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiGraphics.class)
 public abstract class ItemRendererMixin {
 
-    @Shadow
-    @Final
-    private PoseStack pose;
 
     @Inject(method = "renderItemCount", at = @At("HEAD"), cancellable = true)
     private void changeItemCountText(Font font, ItemStack itemStack, int i, int j, @Nullable String string, CallbackInfo ci) {
@@ -27,19 +23,7 @@ public abstract class ItemRendererMixin {
             String newText = stacksizetweaks$formatCount(itemStack.getCount(), StackSizeTweaks.CONFIG.shortenItemAmounts);
             Component renderedText = stacksizetweaks$makeText(newText, StackSizeTweaks.CONFIG.useCustomFont);
 
-            PoseStack pose =
-                    this.pose;
-
-            pose.pushPose();
-            pose.translate(0.0F, 0.0F, 200.0F);
-
-            ((GuiGraphics) (Object) this).drawString(font, renderedText,
-                    i + 17 - font.width(renderedText),
-                    j + 9,
-                    0xFFFFFF,
-                    true);
-
-            pose.popPose();
+            ((GuiGraphics) (Object) this).drawString(font, renderedText, i + 17 - font.width(renderedText), j + 9, -1, true);
         }
 
         ci.cancel();
