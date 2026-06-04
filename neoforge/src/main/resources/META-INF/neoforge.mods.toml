@@ -10,7 +10,7 @@ version = "${version}"
 displayName = "Stack Size Tweaks"
 authors = "Timbas"
 description = "Change default stack sizes of items"
-logoFile = "icon.png"
+logoFile = "assets/stacksizetweaks/icon.png"
 
 [[dependencies.stacksizetweaks]]
 modId = "neoforge"
@@ -28,7 +28,7 @@ side = "BOTH"
 
 [[dependencies.stacksizetweaks]]
 modId = "yet_another_config_lib_v3"
-mandatory = true
+type = "required"
 versionRange = "[yacl_version,)"
 ordering = "NONE"
 side = "CLIENT"

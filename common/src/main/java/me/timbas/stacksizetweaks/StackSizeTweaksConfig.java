@@ -28,7 +28,7 @@ public class StackSizeTweaksConfig {
     public boolean useCustomFont = true;
 
     @SerialEntry
-    public boolean shortenItemAmounts = false;
+    public boolean shortenItemAmounts = true;
 
     @SerialEntry
     public int itemStackLimit = 512;

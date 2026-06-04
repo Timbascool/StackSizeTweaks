@@ -19,6 +19,14 @@ public class StackSizeHelper {
 
     public static int getMaxStackSize(Item item) {
 
+        // Exceptions
+
+        // Item cannot have both durability and be stackable
+        if (item.components().has(DataComponents.MAX_DAMAGE))
+        {
+            return item.getDefaultMaxStackSize();
+        }
+
         int newStackSize;
 
         // Handle overrides
