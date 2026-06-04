@@ -2,10 +2,10 @@ package me.timbas.stacksizetweaks.client.mixin;
 
 import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FontDescription;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
@@ -14,17 +14,16 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 
-@Mixin(GuiGraphics.class)
+@Mixin(GuiGraphicsExtractor.class)
 public abstract class ItemRendererMixin {
 
-
-    @Inject(method = "renderItemCount", at = @At("HEAD"), cancellable = true)
-    private void changeItemCountText(Font font, ItemStack itemStack, int i, int j, @Nullable String string, CallbackInfo ci) {
-        if (itemStack.getCount() != 1 || string != null) {
+    @Inject(method = "itemCount", at = @At("HEAD"), cancellable = true)
+    private void changeItemCountText(Font font, ItemStack itemStack, int x, int y, @Nullable String countText, CallbackInfo ci) {
+        if (itemStack.getCount() != 1 || countText != null) {
             String newText = stacksizetweaks$formatCount(itemStack.getCount(), StackSizeTweaks.CONFIG.shortenItemAmounts);
             Component renderedText = stacksizetweaks$makeText(newText, StackSizeTweaks.CONFIG.useCustomFont);
 
-            ((GuiGraphics) (Object) this).drawString(font, renderedText, i + 17 - font.width(renderedText), j + 9, -1, true);
+            ((GuiGraphicsExtractor) (Object) this).text(font, renderedText, x + 17 - font.width(renderedText), y + 9, -1, true);
         }
 
         ci.cancel();
@@ -33,7 +32,7 @@ public abstract class ItemRendererMixin {
     @Unique
     private static final FontDescription CUSTOM_FONT =
             new FontDescription.Resource(
-                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "inventory_font")
+                    Identifier.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "inventory_font")
             );
 
     @Unique

@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class StackSizeTweaksConfig {
 
     public static final ConfigClassHandler<StackSizeTweaksConfig> HANDLER =
             ConfigClassHandler.createBuilder(StackSizeTweaksConfig.class)
-                    .id(ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "config"))
+                    .id(Identifier.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "config"))
                     .serializer(config -> GsonConfigSerializerBuilder.create(config)
                             .setPath(Path.of(".", "config", "stacksizetweaks.json5").normalize())
                             .appendGsonBuilder(GsonBuilder::setPrettyPrinting)

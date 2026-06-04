@@ -2,10 +2,9 @@ package me.timbas.stacksizetweaks;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import java.util.HashMap;
@@ -30,12 +29,12 @@ public class StackSizeHelper {
         int newStackSize;
 
         // Handle overrides
-        ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
+        Identifier id = BuiltInRegistries.ITEM.getKey(item);
 
         // var foodComponent = item.components().get(DataComponents.FOOD);
 
         var useRemainder = item.components().get(DataComponents.USE_REMAINDER);
-        ItemStack remainderItem = useRemainder == null ? ItemStack.EMPTY : useRemainder.convertInto();
+        Item remainderItem = useRemainder == null ? null : useRemainder.convertInto().item().value();
 
         Integer maxStackSize = item.components().get(DataComponents.MAX_STACK_SIZE);
 
@@ -62,7 +61,7 @@ public class StackSizeHelper {
             newStackSize = StackSizeTweaks.CONFIG.discStackSize;
         }
         // Stews
-        else if (remainderItem.is(Items.BOWL)) {
+        else if (remainderItem == Items.BOWL) {
             newStackSize = StackSizeTweaks.CONFIG.stewStackLimit;
         }
         // Foods

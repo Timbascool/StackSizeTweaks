@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(value = DataComponents.class, priority = 1)
 public class DataComponentsMixin {
 
-    @ModifyExpressionValue(method = "method_58570", at = @At(
+    @ModifyExpressionValue(method = "lambda$static$1", at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/util/ExtraCodecs;intRange(II)Lcom/mojang/serialization/Codec;"))
     private static Codec<Integer> increaseMaxStackSize(Codec<Integer> original) {

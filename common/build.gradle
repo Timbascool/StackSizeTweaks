@@ -3,12 +3,9 @@ architectury {
 }
 
 dependencies {
+    implementation "dev.isxander:yet-another-config-lib:${project.yacl_version}"
+    implementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
 
-
-    modImplementation "dev.isxander:yet-another-config-lib:${project.yacl_version}"
-
-    modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
-
-    modApi "com.terraformersmc:modmenu:${project.mod_menu_version}"
+    compileOnly "com.terraformersmc:modmenu:${rootProject.mod_menu_version}"
+    localRuntime "com.terraformersmc:modmenu:${rootProject.mod_menu_version}"
 }
-
