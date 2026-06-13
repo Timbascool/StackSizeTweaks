@@ -49,11 +49,17 @@ public class StackSizeTweaksConfig {
     public int potionStackLimit = 16;
 
     @SerialEntry
-    public int bucketStackSize = 16;
+    public int bucketStackLimit = 16;
 
     @SerialEntry
-    public int discStackSize = 16;
+    public int playableStackLimit = 16;
 
+    @SerialEntry
+    public int vehicleStackLimit = 16;
+    @SerialEntry
+    public int bedStackLimit = 16;
+    @SerialEntry
+    public int bannerPatternStackLimit = 16;
     @SerialEntry
     public int enchantedBookStackLimit = 16;
 
