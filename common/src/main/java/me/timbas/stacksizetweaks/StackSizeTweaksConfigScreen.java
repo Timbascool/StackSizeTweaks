@@ -85,16 +85,40 @@ public class StackSizeTweaksConfigScreen {
                                         "config.stacksizetweaks.bucket_stack_limit",
                                         "config.stacksizetweaks.bucket_stack_limit.description",
                                         16,
-                                        () -> config.bucketStackSize,
-                                        value -> config.bucketStackSize = value
+                                        () -> config.bucketStackLimit,
+                                        value -> config.bucketStackLimit = value
                                 ))
 
                                 .option(stackSizeOption(
-                                        "config.stacksizetweaks.disc_stack_limit",
-                                        "config.stacksizetweaks.disc_stack_limit.description",
+                                        "config.stacksizetweaks.playable_stack_limit",
+                                        "config.stacksizetweaks.playable_stack_limit.description",
                                         16,
-                                        () -> config.discStackSize,
-                                        value -> config.discStackSize = value
+                                        () -> config.playableStackLimit,
+                                        value -> config.playableStackLimit = value
+                                ))
+
+                                .option(stackSizeOption(
+                                        "config.stacksizetweaks.vehicle_stack_limit",
+                                        "config.stacksizetweaks.vehicle_stack_limit.description",
+                                        16,
+                                        () -> config.playableStackLimit,
+                                        value -> config.playableStackLimit = value
+                                ))
+
+                                .option(stackSizeOption(
+                                        "config.stacksizetweaks.bed_stack_limit",
+                                        "config.stacksizetweaks.bed_stack_limit.description",
+                                        16,
+                                        () -> config.bedStackLimit,
+                                        value -> config.bedStackLimit = value
+                                ))
+
+                                .option(stackSizeOption(
+                                        "config.stacksizetweaks.banner_pattern_stack_limit",
+                                        "config.stacksizetweaks.banner_pattern_stack_limit.description",
+                                        16,
+                                        () -> config.bannerPatternStackLimit,
+                                        value -> config.bannerPatternStackLimit = value
                                 ))
 
                                 .option(stackSizeOption(

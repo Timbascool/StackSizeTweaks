@@ -29,14 +29,25 @@
   "config.stacksizetweaks.bucket_stack_limit": "Bucket Stack Limit",
   "config.stacksizetweaks.bucket_stack_limit.description": "Maximum stack size for bucket items.",
 
-  "config.stacksizetweaks.disc_stack_limit": "Disc Stack Limit",
-  "config.stacksizetweaks.disc_stack_limit.description": "Maximum stack size for music discs.",
+  "config.stacksizetweaks.playable_stack_limit": "Disc and Goat Horn Stack Limits",
+  "config.stacksizetweaks.playable_stack_limit.description": "Maximum stack sizes for music discs and goat horns.",
+
+  "config.stacksizetweaks.vehicle_stack_limit": "Boat and Minecart Stack Limits",
+  "config.stacksizetweaks.vehicle_stack_limit.description": "Maximum stack sizes for all boat and minecart items.",
+
+  "config.stacksizetweaks.bed_stack_limit": "Bed Stack Limits",
+  "config.stacksizetweaks.bed_stack_limit.description": "Maximum stack size for beds.",
+
+  "config.stacksizetweaks.banner_pattern_stack_limit": "Banner Pattern Stack Limits",
+  "config.stacksizetweaks.banner_pattern_stack_limit.description": "Maximum stack size for banner patterns.",
+
 
   "config.stacksizetweaks.enchanted_book_stack_limit": "Enchanted Book Stack Limit",
   "config.stacksizetweaks.enchanted_book_stack_limit.description": "Maximum stack size for enchanted books.",
 
+
   "config.stacksizetweaks.non_stackable_stack_limit": "Unstackable Stack Limit",
-  "config.stacksizetweaks.non_stackable_stack_limit.description": "Maximum stack size for all items that don't stack normally. Will likely cause issues for some items.",
+  "config.stacksizetweaks.non_stackable_stack_limit.description": "Maximum stack size for all items that don't stack normally and don't have durability. Will likely cause issues for some items.",
 
   "config.stacksizetweaks.overrides": "Overrides",
   "config.stacksizetweaks.overrides.description": "Change stack sizes for specific items.\nFormat: minecraft:example_item=64",
@@ -44,7 +55,7 @@
   "config.stacksizetweaks.font_formatting": "Font and Formatting",
 
   "config.stacksizetweaks.use_custom_font": "Use Custom Font",
-  "config.stacksizetweaks.use_custom_font.description": "Use a smaller custom font for item counts to reduce clutter.\"",
+  "config.stacksizetweaks.use_custom_font.description": "Use a smaller custom font for item counts to reduce clutter.",
 
   "config.stacksizetweaks.shorten_item_amounts": "Aggressive Formatting",
   "config.stacksizetweaks.shorten_item_amounts.description": "Make item counts show up as short as possible i.e. 300M -> 0.3B, 123K -> 0.1M"
