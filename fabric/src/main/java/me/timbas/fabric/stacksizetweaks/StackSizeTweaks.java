@@ -11,7 +11,8 @@ public final class StackSizeTweaks implements ModInitializer {
         me.timbas.stacksizetweaks.StackSizeTweaks.init();
 
         DefaultItemComponentEvents.MODIFY.register(modifyContext -> {
-            modifyContext.modify(item -> true, (builder, item) -> builder.set(DataComponents.MAX_STACK_SIZE, StackSizeHelper.getMaxStackSize(item)));
+            modifyContext.modify(item -> true, (builder, item) -> builder
+                    .set(DataComponents.MAX_STACK_SIZE, StackSizeHelper.getMaxStackSize(item, item.components())));
         });
     }
 }

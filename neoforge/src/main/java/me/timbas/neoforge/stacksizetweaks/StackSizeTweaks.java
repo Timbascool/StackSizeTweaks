@@ -1,8 +1,8 @@
 package me.timbas.neoforge.stacksizetweaks;
 
 import me.timbas.stacksizetweaks.StackSizeHelper;
-import me.timbas.stacksizetweaks.StackSizeTweaksConfig;
 import me.timbas.stacksizetweaks.StackSizeTweaksConfigScreen;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
@@ -28,16 +28,14 @@ public final class StackSizeTweaks {
         modBus.register(this);
     }
 
-
     @SubscribeEvent
     public void ChangeAllStackSizes(ModifyDefaultComponentsEvent event) {
         for (Item item : BuiltInRegistries.ITEM) {
-            event.modify(item, builder ->
-                    builder.set(
-                            DataComponents.MAX_STACK_SIZE,
-                            StackSizeHelper.getMaxStackSize(item)
-                    )
-            );
+            event.modify(item, builder -> {
+                DataComponentMap components = builder.build();
+                builder.set(DataComponents.MAX_STACK_SIZE,
+                        StackSizeHelper.getMaxStackSize(item, components));
+            });
         }
     }
 }

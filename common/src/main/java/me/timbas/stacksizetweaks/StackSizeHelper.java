@@ -1,5 +1,6 @@
 package me.timbas.stacksizetweaks;
 
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -14,16 +15,14 @@ public class StackSizeHelper {
 
     public static Map<String, Integer> overridesMap = new HashMap<>();
 
-    public static int getMaxStackSize(Item item) {
-
-        var components = item.components();
-
+    public static int getMaxStackSize(Item item, DataComponentMap components) {
         // Exceptions
 
         // Item cannot have both durability and be stackable
         if (components.has(DataComponents.MAX_DAMAGE))
         {
-            return item.getDefaultMaxStackSize();
+            Integer maxStackSize = components.get(DataComponents.MAX_STACK_SIZE);
+            return maxStackSize == null ? 1 : maxStackSize;
         }
 
         int newStackSize;
