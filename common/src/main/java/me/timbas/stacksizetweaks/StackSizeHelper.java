@@ -2,7 +2,7 @@ package me.timbas.stacksizetweaks;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 
 import java.util.HashMap;
@@ -29,12 +29,12 @@ public class StackSizeHelper {
         int newStackSize;
 
         // Handle overrides
-        Identifier id = BuiltInRegistries.ITEM.getKey(item);
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
 
         // var foodComponent = components.get(DataComponents.FOOD);
 
         var useRemainder = components.get(DataComponents.USE_REMAINDER);
-        Item remainderItem = useRemainder == null ? null : useRemainder.convertInto().item().value();
+        Item remainderItem = useRemainder == null ? null : useRemainder.convertInto().getItem();
 
         Integer maxStackSize = components.get(DataComponents.MAX_STACK_SIZE);
 
@@ -42,7 +42,7 @@ public class StackSizeHelper {
             newStackSize = overridesMap.get(id.toString());
         }
         // Handle manual overrides
-        else if (item == Items.REDSTONE || item == Items.STRING || item == Items.RESIN_CLUMP) {
+        else if (item == Items.REDSTONE || item == Items.STRING) {
             newStackSize = StackSizeTweaks.CONFIG.itemStackLimit;
         }
 
@@ -83,7 +83,7 @@ public class StackSizeHelper {
             newStackSize = StackSizeTweaks.CONFIG.bedStackLimit;
         }
         // Banner patterns
-        else if (components.has(DataComponents.PROVIDES_BANNER_PATTERNS))
+        else if (item instanceof BannerPatternItem)
         {
             newStackSize = StackSizeTweaks.CONFIG.bannerPatternStackLimit;
         }
