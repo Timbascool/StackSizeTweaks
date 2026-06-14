@@ -12,7 +12,7 @@
     "fixes.AnvilMenuMixin",
     "fixes.ContainersMixin",
     "fixes.ItemEntityMixin",
-    "fixes.ItemStackTemplateMixin",
+    "ItemStackTemplateMixin",
     "fixes.SolidBucketItemMixin"
   ],
   "injectors": {

@@ -1,4 +1,4 @@
-package me.timbas.stacksizetweaks.mixin.fixes;
+package me.timbas.stacksizetweaks.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.serialization.Codec;
