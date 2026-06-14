@@ -34,7 +34,7 @@ public class StackSizeHelper {
         // var foodComponent = components.get(DataComponents.FOOD);
 
         var useRemainder = components.get(DataComponents.USE_REMAINDER);
-        Item remainderItem = useRemainder == null ? null : useRemainder.convertInto().item().value();
+        Item remainderItem = useRemainder == null ? null : useRemainder.convertInto().getItem();
 
         Integer maxStackSize = components.get(DataComponents.MAX_STACK_SIZE);
 
