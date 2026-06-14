@@ -2,7 +2,7 @@ package me.timbas.stacksizetweaks;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 
 import java.util.HashMap;
@@ -29,7 +29,7 @@ public class StackSizeHelper {
         int newStackSize;
 
         // Handle overrides
-        Identifier id = BuiltInRegistries.ITEM.getKey(item);
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
 
         // var foodComponent = components.get(DataComponents.FOOD);
 
