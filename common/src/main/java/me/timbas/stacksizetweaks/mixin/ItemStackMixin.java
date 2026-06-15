@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ItemStack.class)
-public abstract class ItemStackCodecMixin {
+public abstract class ItemStackMixin {
 
     @ModifyExpressionValue(method = "lambda$static$1", at = @At(
             value = "INVOKE",
