@@ -7,9 +7,11 @@
   ],
   "mixins": [
     "ContainerMixin",
-    "ItemStackCodecMixin",
     "DataComponentsMixin",
+    "ItemStackMixin",
+    "ItemStackTemplateMixin",
     "fixes.AnvilMenuMixin",
+    "fixes.BucketableMixin",
     "fixes.ContainersMixin",
     "fixes.ItemEntityMixin",
     "fixes.SolidBucketItemMixin"
