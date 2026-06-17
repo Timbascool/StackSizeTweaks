@@ -2,8 +2,7 @@ package me.timbas.stacksizetweaks.mixin.fixes;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.Bucketable;
+import net.minecraft.world.entity.Bucketable;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,7 +18,7 @@ public interface BucketableMixin {
                     target = "Lnet/minecraft/world/item/ItemUtils;createFilledResult(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/item/ItemStack;Z)Lnet/minecraft/world/item/ItemStack;"
             )
     )
-    private static <T extends LivingEntity> ItemStack fixBucketDesync(
+    private static ItemStack fixBucketDesync(
             ItemStack itemStack, Player player, ItemStack newItemStack, boolean limitCreativeStackSize, Operation<ItemStack> original
     ) {
         if (player.level().isClientSide()) {

@@ -29,10 +29,12 @@ public final class StackSizeTweaks {
     @SubscribeEvent
     public void ChangeAllStackSizes(ModifyDefaultComponentsEvent event) {
         for (Item item : BuiltInRegistries.ITEM) {
-            event.modify(item, builder -> {
-                DataComponentMap components = builder.build();
-                builder.set(DataComponents.MAX_STACK_SIZE,
-                        StackSizeHelper.getMaxStackSize(item, components));
+            event.modify(item, (builder, provider, currentItem) -> {
+                DataComponentMap current = builder.build();
+                builder.set(
+                        DataComponents.MAX_STACK_SIZE,
+                        StackSizeHelper.getMaxStackSize(currentItem, current)
+                );
             });
         }
     }
