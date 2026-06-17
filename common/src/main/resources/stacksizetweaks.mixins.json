@@ -9,7 +9,6 @@
     "ContainerMixin",
     "DataComponentsMixin",
     "ItemStackMixin",
-    "ItemStackTemplateMixin",
     "fixes.AnvilMenuMixin",
     "fixes.BucketableMixin",
     "fixes.ContainersMixin",
