@@ -15,7 +15,7 @@ import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 public final class StackSizeTweaks {
     public StackSizeTweaks(IEventBus modBus) {
 
-        if (FMLEnvironment.dist == Dist.CLIENT)
+        if (FMLEnvironment.getDist() == Dist.CLIENT)
         {
             StackSizeTweaksClient.ClientInit();
         }
