@@ -53,7 +53,7 @@ public class StackSizeHelper {
             newStackSize = StackSizeTweaks.CONFIG.potionStackLimit;
         }
         // Buckets
-        else if (components.has(DataComponents.BUCKET_ENTITY_DATA) || item == Items.LAVA_BUCKET || item == Items.WATER_BUCKET || item == Items.MILK_BUCKET || item == Items.POWDER_SNOW_BUCKET) {
+        else if (components.has(DataComponents.BUCKET_ENTITY_DATA) || item instanceof BucketItem || item instanceof SolidBucketItem || item instanceof MobBucketItem || item == Items.MILK_BUCKET) {
             newStackSize = StackSizeTweaks.CONFIG.bucketStackLimit;
         }
         // Discs and goat horns
