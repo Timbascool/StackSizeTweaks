@@ -1,5 +1,6 @@
 package me.timbas.stacksizetweaks.client.mixin;
 
+import me.timbas.stacksizetweaks.FontOption;
 import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -22,7 +23,7 @@ public abstract class ItemRendererMixin {
     private void changeItemCountText(Font font, ItemStack itemStack, int i, int j, @Nullable String string, CallbackInfo ci) {
         if (itemStack.getCount() != 1 || string != null) {
             String newText = stacksizetweaks$formatCount(itemStack.getCount(), StackSizeTweaks.CONFIG.shortenItemAmounts);
-            Component renderedText = stacksizetweaks$makeText(newText, StackSizeTweaks.CONFIG.useCustomFont);
+            Component renderedText = stacksizetweaks$makeText(newText, StackSizeTweaks.CONFIG.customFont);
 
             ((GuiGraphics) (Object) this).drawString(font, renderedText, i + 17 - font.width(renderedText), j + 9, -1, true);
         }
@@ -31,20 +32,31 @@ public abstract class ItemRendererMixin {
     }
 
     @Unique
-    private static final FontDescription CUSTOM_FONT =
+    private static final FontDescription SMALL_FONT =
             new FontDescription.Resource(
-                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "inventory_font")
+                    Identifier.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "small_font")
             );
 
     @Unique
-    private static Component stacksizetweaks$makeText(String text, boolean useCustomFont) {
+    private static final FontDescription TINY_FONT =
+            new FontDescription.Resource(
+                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "tiny_font")
+            );
 
-        if (useCustomFont) {
-            return Component.literal(text)
-                    .withStyle(style -> style.withFont(CUSTOM_FONT));
-        } else {
-            return Component.literal(text);
-        }
+    @Unique
+    private static Component stacksizetweaks$makeText(String text, FontOption fontOption) {
+
+        return switch (fontOption) {
+            case Vanilla -> Component.literal(text);
+
+            case Small -> Component.literal(text)
+                    .withStyle(style -> style.withFont(SMALL_FONT));
+
+            case Tiny -> Component.literal(text)
+                    .withStyle(style -> style.withFont(TINY_FONT));
+
+            case null -> Component.literal(text);
+        };
     }
 
     @Unique
