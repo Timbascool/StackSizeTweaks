@@ -6,7 +6,7 @@
     },
     {
       "type": "bitmap",
-      "file": "stacksizetweaks:font/inventory_font.png",
+      "file": "stacksizetweaks:font/tiny_font.png",
       "ascent": 7,
       "chars": [
         "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",

@@ -1,6 +1,7 @@
 package me.timbas.stacksizetweaks;
 
 import dev.isxander.yacl3.api.*;
+import dev.isxander.yacl3.api.controller.EnumControllerBuilder;
 import dev.isxander.yacl3.api.controller.IntegerFieldControllerBuilder;
 import dev.isxander.yacl3.api.controller.StringControllerBuilder;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
@@ -158,13 +159,12 @@ public class StackSizeTweaksConfigScreen {
                         .group(OptionGroup.createBuilder()
                                 .name(Component.translatable("config.stacksizetweaks.font_formatting"))
 
-                                .option(boolOption(
-                                        "config.stacksizetweaks.use_custom_font",
-                                        "config.stacksizetweaks.use_custom_font.description",
-                                        true,
-                                        () -> config.useCustomFont,
-                                        value -> config.useCustomFont = value
-                                ))
+                                .option(Option.<FontOption>createBuilder()
+                                        .name(Component.translatable("config.stacksizetweaks.font_option"))
+                                        .description(OptionDescription.of(Component.translatable("config.stacksizetweaks.font_option.description")))
+                                        .binding(FontOption.Small, () -> config.customFont, value -> config.customFont = value)
+                                        .controller(opt -> EnumControllerBuilder.create(opt).enumClass(FontOption.class))
+                                        .build())
 
                                 .option(boolOption(
                                         "config.stacksizetweaks.shorten_item_amounts",

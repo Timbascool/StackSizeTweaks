@@ -54,8 +54,12 @@
 
   "config.stacksizetweaks.font_formatting": "Font and Formatting",
 
-  "config.stacksizetweaks.use_custom_font": "Use Custom Font",
-  "config.stacksizetweaks.use_custom_font.description": "Use a smaller custom font for item counts to reduce clutter.",
+  "config.stacksizetweaks.font_option": "Item Amount Font",
+  "config.stacksizetweaks.font_option.description": "Font used to render item amounts inside the inventory.",
+
+  "config.stacksizetweaks.font_option.vanilla": "Vanilla Font",
+  "config.stacksizetweaks.font_option.small": "Small Font",
+  "config.stacksizetweaks.font_option.tiny": "Tiny Font",
 
   "config.stacksizetweaks.shorten_item_amounts": "Aggressive Formatting",
   "config.stacksizetweaks.shorten_item_amounts.description": "Make item counts show up as short as possible i.e. 300M -> 0.3B, 123K -> 0.1M"
