@@ -52,6 +52,11 @@
   "config.stacksizetweaks.overrides": "Overrides",
   "config.stacksizetweaks.overrides.description": "Change stack sizes for specific items.\nFormat: minecraft:example_item=64",
 
+  "config.stacksizetweaks.logic": "Logic",
+
+  "config.stacksizetweaks.vanilla_comparator_amounts": "Vanilla Comparator Amounts",
+  "config.stacksizetweaks.vanilla_comparator_amounts.description": "Use the vanilla stack size of items for comparator comparing",
+
   "config.stacksizetweaks.font_formatting": "Font and Formatting",
 
   "config.stacksizetweaks.font_option": "Item Amount Font",
