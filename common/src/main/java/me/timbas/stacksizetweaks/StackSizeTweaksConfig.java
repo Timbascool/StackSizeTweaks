@@ -2,9 +2,11 @@ package me.timbas.stacksizetweaks;
 
 
 import com.google.gson.GsonBuilder;
+import dev.isxander.yacl3.api.NameableEnum;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
 import java.nio.file.Path;
@@ -25,7 +27,7 @@ public class StackSizeTweaksConfig {
                     .build();
 
     @SerialEntry
-    public boolean useCustomFont = true;
+    public FontOption customFont = FontOption.Small;
 
     @SerialEntry
     public boolean shortenItemAmounts = true;
@@ -71,3 +73,5 @@ public class StackSizeTweaksConfig {
             "minecraft:example_item=64"
     ));
 }
+
+
