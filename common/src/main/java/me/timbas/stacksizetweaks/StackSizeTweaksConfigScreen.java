@@ -157,6 +157,20 @@ public class StackSizeTweaksConfigScreen {
                                 .build())
 
                         .group(OptionGroup.createBuilder()
+                                .name(Component.translatable("config.stacksizetweaks.logic"))
+
+                                .option(boolOption(
+                                        "config.stacksizetweaks.vanilla_comparator_amounts",
+                                            "config.stacksizetweaks.vanilla_comparator_amounts.description",
+                                        false,
+                                        () -> config.vanillaComparatorAmounts,
+                                        value -> config.vanillaComparatorAmounts = value
+
+                                ))
+                                .build())
+
+
+                        .group(OptionGroup.createBuilder()
                                 .name(Component.translatable("config.stacksizetweaks.font_formatting"))
 
                                 .option(Option.<FontOption>createBuilder()
