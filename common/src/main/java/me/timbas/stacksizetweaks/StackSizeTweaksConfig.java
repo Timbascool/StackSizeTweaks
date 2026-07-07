@@ -33,6 +33,9 @@ public class StackSizeTweaksConfig {
     public boolean shortenItemAmounts = true;
 
     @SerialEntry
+    public boolean vanillaComparatorAmounts = false;
+
+    @SerialEntry
     public int itemStackLimit = 512;
 
     @SerialEntry
