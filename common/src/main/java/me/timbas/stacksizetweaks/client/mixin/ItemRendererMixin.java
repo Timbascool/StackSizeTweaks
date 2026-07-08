@@ -34,7 +34,7 @@ public abstract class ItemRendererMixin {
     @Unique
     private static final FontDescription SMALL_FONT =
             new FontDescription.Resource(
-                    Identifier.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "small_font")
+                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "small_font")
             );
 
     @Unique
