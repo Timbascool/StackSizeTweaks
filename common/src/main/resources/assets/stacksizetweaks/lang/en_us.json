@@ -55,9 +55,13 @@
   "config.stacksizetweaks.logic": "Logic",
 
   "config.stacksizetweaks.vanilla_comparator_amounts": "Vanilla Comparator Amounts",
-  "config.stacksizetweaks.vanilla_comparator_amounts.description": "Use the vanilla stack size of items for comparator comparing",
+  "config.stacksizetweaks.vanilla_comparator_amounts.description": "Use the vanilla stack size of items for comparator comparing.",
 
   "config.stacksizetweaks.font_formatting": "Font and Formatting",
+
+  "config.stacksizetweaks.amount_tooltip": "Display Item Amount Tooltip",
+  "config.stacksizetweaks.amount_tooltip.description": "Display a tooltip that shows the precise amount of items for large stack sizes.",
+
 
   "config.stacksizetweaks.font_option": "Item Amount Font",
   "config.stacksizetweaks.font_option.description": "Font used to render item amounts inside the inventory.",
@@ -67,5 +71,5 @@
   "config.stacksizetweaks.font_option.tiny": "Tiny Font",
 
   "config.stacksizetweaks.shorten_item_amounts": "Aggressive Formatting",
-  "config.stacksizetweaks.shorten_item_amounts.description": "Make item counts show up as short as possible i.e. 300M -> 0.3B, 123K -> 0.1M"
+  "config.stacksizetweaks.shorten_item_amounts.description": "Make item counts show up as short as possible i.e. 300M -> 0.3B, 123K -> 0.1M."
 }
