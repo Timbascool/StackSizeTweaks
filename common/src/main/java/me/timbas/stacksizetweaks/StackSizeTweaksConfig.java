@@ -27,6 +27,9 @@ public class StackSizeTweaksConfig {
                     .build();
 
     @SerialEntry
+    public boolean amountTooltip = true;
+
+    @SerialEntry
     public FontOption customFont = FontOption.Small;
 
     @SerialEntry
