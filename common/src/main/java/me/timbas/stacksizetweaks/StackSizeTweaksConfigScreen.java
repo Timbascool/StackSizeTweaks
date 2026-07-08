@@ -173,6 +173,14 @@ public class StackSizeTweaksConfigScreen {
                         .group(OptionGroup.createBuilder()
                                 .name(Component.translatable("config.stacksizetweaks.font_formatting"))
 
+                                .option(boolOption(
+                                        "config.stacksizetweaks.amount_tooltip",
+                                        "config.stacksizetweaks.amount_tooltip.description",
+                                        true,
+                                        () -> config.amountTooltip,
+                                        value -> config.amountTooltip = value
+                                ))
+
                                 .option(Option.<FontOption>createBuilder()
                                         .name(Component.translatable("config.stacksizetweaks.font_option"))
                                         .description(OptionDescription.of(Component.translatable("config.stacksizetweaks.font_option.description")))
