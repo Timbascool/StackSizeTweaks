@@ -2,6 +2,8 @@ package me.timbas.stacksizetweaks.client.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.mojang.blaze3d.vertex.PoseStack;
+import me.timbas.stacksizetweaks.FontOption;
 import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -16,24 +18,41 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(GuiGraphics.class)
 public abstract class ItemRendererMixin {
 
+    @Shadow
+    @Final
+    private PoseStack pose;
+
+    @Inject(method = "renderItemCount", at = @At("HEAD"), cancellable = true)
+    private void changeItemCountText(Font font, ItemStack itemStack, int i, int j, @Nullable String string, CallbackInfo ci) {
+        if (itemStack.getCount() != 1 || string != null) {
+            String newText = stacksizetweaks$formatCount(itemStack.getCount(), StackSizeTweaks.CONFIG.shortenItemAmounts);
+            Component renderedText = stacksizetweaks$makeText(newText, StackSizeTweaks.CONFIG.customFont);
+
+            PoseStack pose =
+                    this.pose;
+
+            pose.pushPose();
+            pose.translate(0.0F, 0.0F, 200.0F);
+
+            ((GuiGraphics) (Object) this).drawString(font, renderedText,
+                    i + 17 - font.width(renderedText),
+                    j + 9,
+                    0xFFFFFF,
+                    true);
+
+            pose.popPose();
+        }
+
+        ci.cancel();
+    }
+
     @Unique
     private static final ResourceLocation SMALL_FONT =
             ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "small_font");
 
     @Unique
-    private static String stacksizetweaks$formatCountText(String original) {
-        if (original == null || !original.matches("\\d+")) {
-            return original;
-        }
-
-        int count = Integer.parseInt(original);
-        return stacksizetweaks$formatCount(count, StackSizeTweaks.CONFIG.shortenItemAmounts);
-    }
-
-    @Unique
     private static final ResourceLocation TINY_FONT =
             ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "tiny_font");
-
 
     @Unique
     private static Component stacksizetweaks$makeText(String text, FontOption fontOption) {
