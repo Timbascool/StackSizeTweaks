@@ -2,8 +2,6 @@ package me.timbas.stacksizetweaks.client.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.mojang.blaze3d.vertex.PoseStack;
-import me.timbas.stacksizetweaks.FontOption;
 import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -11,39 +9,62 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 
 @Mixin(GuiGraphics.class)
 public abstract class ItemRendererMixin {
 
-    @Shadow
-    @Final
-    private PoseStack pose;
+    @WrapOperation(
+            method = "renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Font;width(Ljava/lang/String;)I")
+    )
+    private int modifyWidth(Font font, String text, Operation<Integer> original) {
+        String formatted = stacksizetweaks$formatCountText(text);
 
-    @Inject(method = "renderItemCount", at = @At("HEAD"), cancellable = true)
-    private void changeItemCountText(Font font, ItemStack itemStack, int i, int j, @Nullable String string, CallbackInfo ci) {
-        if (itemStack.getCount() != 1 || string != null) {
-            String newText = stacksizetweaks$formatCount(itemStack.getCount(), StackSizeTweaks.CONFIG.shortenItemAmounts);
-            Component renderedText = stacksizetweaks$makeText(newText, StackSizeTweaks.CONFIG.customFont);
+        Component component;
 
-            PoseStack pose =
-                    this.pose;
+        switch (StackSizeTweaks.CONFIG.customFont) {
 
-            pose.pushPose();
-            pose.translate(0.0F, 0.0F, 200.0F);
+            case Vanilla -> {
+                return original.call(font, formatted);
+            }
 
-            ((GuiGraphics) (Object) this).drawString(font, renderedText,
-                    i + 17 - font.width(renderedText),
-                    j + 9,
-                    0xFFFFFF,
-                    true);
+            case Small -> component = Component.literal(formatted).withStyle(style -> style.withFont(SMALL_FONT));
 
-            pose.popPose();
+            case Tiny -> component = Component.literal(formatted).withStyle(style -> style.withFont(TINY_FONT));
+
+            case null -> {
+                return original.call(font, formatted);
+            }
         }
 
-        ci.cancel();
+        return font.width(component);
+    }
+
+    @WrapOperation(
+            method = "renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Ljava/lang/String;IIIZ)I")
+    )
+    private int modifyDrawString(GuiGraphics instance, Font font, String text, int x, int y, int color, boolean shadow, Operation<Integer> original) {
+        String formatted = stacksizetweaks$formatCountText(text);
+
+        Component component;
+
+        switch (StackSizeTweaks.CONFIG.customFont) {
+            case Vanilla -> {
+                return original.call(instance, font, formatted, x, y, color, shadow);
+            }
+
+            case Small -> component = Component.literal(formatted).withStyle(style -> style.withFont(SMALL_FONT));
+
+            case Tiny -> component = Component.literal(formatted).withStyle(style -> style.withFont(TINY_FONT));
+
+            case null -> {
+                return original.call(instance, font, formatted, x, y, color, shadow);
+            }
+        }
+
+        return instance.drawString(font, component, x, y, color, shadow);
     }
 
     @Unique
@@ -54,20 +75,15 @@ public abstract class ItemRendererMixin {
     private static final ResourceLocation TINY_FONT =
             ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "tiny_font");
 
+
     @Unique
-    private static Component stacksizetweaks$makeText(String text, FontOption fontOption) {
+    private static String stacksizetweaks$formatCountText(String original) {
+        if (original == null || !original.matches("\\d+")) {
+            return original;
+        }
 
-        return switch (fontOption) {
-            case Vanilla -> Component.literal(text);
-
-            case Small -> Component.literal(text)
-                    .withStyle(style -> style.withFont(SMALL_FONT));
-
-            case Tiny -> Component.literal(text)
-                    .withStyle(style -> style.withFont(TINY_FONT));
-
-            case null -> Component.literal(text);
-        };
+        int count = Integer.parseInt(original);
+        return stacksizetweaks$formatCount(count, StackSizeTweaks.CONFIG.shortenItemAmounts);
     }
 
     @Unique
