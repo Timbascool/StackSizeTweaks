@@ -17,10 +17,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class ItemRendererMixin {
 
     @Unique
-    private static final FontDescription SMALL_FONT =
-            new FontDescription.Resource(
-                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "small_font")
-            );
+    private static final ResourceLocation SMALL_FONT =
+            ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "small_font");
 
     @Unique
     private static String stacksizetweaks$formatCountText(String original) {
@@ -31,10 +29,11 @@ public abstract class ItemRendererMixin {
         int count = Integer.parseInt(original);
         return stacksizetweaks$formatCount(count, StackSizeTweaks.CONFIG.shortenItemAmounts);
     }
-    private static final FontDescription TINY_FONT =
-            new FontDescription.Resource(
-                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "tiny_font")
-            );
+
+    @Unique
+    private static final ResourceLocation TINY_FONT =
+            ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "tiny_font");
+
 
     @Unique
     private static Component stacksizetweaks$makeText(String text, FontOption fontOption) {
@@ -76,14 +75,22 @@ public abstract class ItemRendererMixin {
             newCount /= 1_000_000_000;
         }
 
+        // 3.3K, 33K, 0,3M When shortened
+        // 3.3K, 33K, 333K When not shortened
+        // Round to 1 decimal
         double rounded = Math.round(newCount * 10.0) / 10.0;
 
+        // Always have 2 or 3 figures
         if (rounded >= 10.0) {
             return Math.round(rounded) + suffix;
         }
+
+        // If exact value don't show decimal
         if (rounded == (int) rounded) {
             return ((int) rounded) + suffix;
         }
+
+        // Show 1 decimal
         return String.format("%.1f%s", rounded, suffix);
     }
 }
