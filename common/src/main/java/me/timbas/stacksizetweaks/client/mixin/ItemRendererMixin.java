@@ -5,7 +5,6 @@ import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FontDescription;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
@@ -32,16 +31,12 @@ public abstract class ItemRendererMixin {
     }
 
     @Unique
-    private static final FontDescription SMALL_FONT =
-            new FontDescription.Resource(
-                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "small_font")
-            );
+    private static final ResourceLocation SMALL_FONT =
+            ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "small_font");
 
     @Unique
-    private static final FontDescription TINY_FONT =
-            new FontDescription.Resource(
-                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "tiny_font")
-            );
+    private static final ResourceLocation TINY_FONT =
+            ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "tiny_font");
 
     @Unique
     private static Component stacksizetweaks$makeText(String text, FontOption fontOption) {
