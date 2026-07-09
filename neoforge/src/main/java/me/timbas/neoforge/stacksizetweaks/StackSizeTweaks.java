@@ -29,7 +29,7 @@ public final class StackSizeTweaks {
 
         modBus.addListener(this::ChangeAllStackSizes);
 
-        if (FMLEnvironment.getDist() == Dist.CLIENT)
+        if (FMLEnvironment.dist == Dist.CLIENT)
         {
             NeoForge.EVENT_BUS.addListener(this::AddCountTooltip);
         }

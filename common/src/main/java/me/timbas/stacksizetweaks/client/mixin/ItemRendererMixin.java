@@ -46,16 +46,12 @@ public abstract class ItemRendererMixin {
     }
 
     @Unique
-    private static final FontDescription SMALL_FONT =
-            new FontDescription.Resource(
-                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "small_font")
-            );
+    private static final ResourceLocation SMALL_FONT =
+            ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "small_font");
 
     @Unique
-    private static final FontDescription TINY_FONT =
-            new FontDescription.Resource(
-                    ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "tiny_font")
-            );
+    private static final ResourceLocation TINY_FONT =
+            ResourceLocation.fromNamespaceAndPath(StackSizeTweaks.MOD_ID, "tiny_font");
 
     @Unique
     private static Component stacksizetweaks$makeText(String text, FontOption fontOption) {
