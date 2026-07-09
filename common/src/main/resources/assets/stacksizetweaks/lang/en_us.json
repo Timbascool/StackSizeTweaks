@@ -3,7 +3,7 @@
 
   "config.stacksizetweaks.category.general": "Stack Size Tweaks",
 
-  "config.stacksizetweaks.label.info": "Change the default stack size of items.\n\nUse 0 for max stack size (2,100,000,000).\n\nChanges to stack sizes require a restart to take effect.",
+  "config.stacksizetweaks.label.info": "Change the default stack size of items.\n\nUse 0 for max stack size (1,000,000,000).\n\nChanges to stack sizes require a restart to take effect.",
 
   "config.stacksizetweaks.group.item_groups": "Item Groups",
   "config.stacksizetweaks.group.item_groups.description": "Max stack sizes for different item groups",
