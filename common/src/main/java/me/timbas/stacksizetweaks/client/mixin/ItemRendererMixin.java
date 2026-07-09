@@ -1,6 +1,7 @@
 package me.timbas.stacksizetweaks.client.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import me.timbas.stacksizetweaks.FontOption;
 import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
