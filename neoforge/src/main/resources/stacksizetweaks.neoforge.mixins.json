@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "me.timbas.neoforge.stacksizetweaks.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "minVersion": "0.8",
+  "client": [
+  ],
+  "mixins": [
+    "ComponentItemHandlerMixin",
+    "EntityEquipmentInvWrapperMixin",
+    "ItemAccessResourceHandler",
+    "ItemStackHandlerMixin",
+    "ItemStackResourceHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
