@@ -1,16 +1,17 @@
-package me.timbas.stacksizetweaks;
+package me.timbas.stacksizetweaks.config;
 
 import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.EnumControllerBuilder;
 import dev.isxander.yacl3.api.controller.IntegerFieldControllerBuilder;
 import dev.isxander.yacl3.api.controller.StringControllerBuilder;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
+import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
-import static me.timbas.stacksizetweaks.StackSizeTweaksConfig.HANDLER;
+import static me.timbas.stacksizetweaks.config.StackSizeTweaksConfig.HANDLER;
 
 public class StackSizeTweaksConfigScreen {
 
