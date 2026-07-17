@@ -1,6 +1,6 @@
 package me.timbas.stacksizetweaks.client.mixin;
 
-import me.timbas.stacksizetweaks.FontOption;
+import me.timbas.stacksizetweaks.config.FontOption;
 import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;

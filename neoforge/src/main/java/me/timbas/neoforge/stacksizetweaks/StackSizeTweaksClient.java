@@ -1,7 +1,7 @@
 package me.timbas.neoforge.stacksizetweaks;
 
 
-import me.timbas.stacksizetweaks.StackSizeTweaksConfigScreen;
+import me.timbas.stacksizetweaks.config.StackSizeTweaksConfigScreen;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 

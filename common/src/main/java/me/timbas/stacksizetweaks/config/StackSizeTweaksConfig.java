@@ -1,4 +1,4 @@
-package me.timbas.stacksizetweaks;
+package me.timbas.stacksizetweaks.config;
 
 
 import com.google.gson.GsonBuilder;
