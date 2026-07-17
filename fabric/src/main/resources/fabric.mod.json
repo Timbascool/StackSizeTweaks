@@ -19,6 +19,9 @@
     "main": [
       "me.timbas.fabric.stacksizetweaks.StackSizeTweaks"
     ],
+    "client": [
+      "me.timbas.fabric.stacksizetweaks.StackSizeTweaksClient"
+    ],
     "modmenu": [
       "me.timbas.stacksizetweaks.ModMenuIntegration"
     ]
