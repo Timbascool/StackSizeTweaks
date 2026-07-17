@@ -1,9 +1,8 @@
 package me.timbas.stacksizetweaks;
 
+import me.timbas.stacksizetweaks.config.StackSizeTweaksConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.awt.*;
 
 
 public final class StackSizeTweaks {
