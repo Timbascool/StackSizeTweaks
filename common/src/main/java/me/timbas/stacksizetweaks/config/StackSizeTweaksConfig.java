@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
+import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.resources.ResourceLocation;
 
 import java.nio.file.Path;
