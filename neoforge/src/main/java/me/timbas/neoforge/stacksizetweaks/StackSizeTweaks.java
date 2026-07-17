@@ -26,15 +26,15 @@ public final class StackSizeTweaks {
 
         me.timbas.stacksizetweaks.StackSizeTweaks.init();
 
-        modBus.addListener(this::ChangeAllStackSizes);
+        modBus.addListener(this::changeAllStackSizes);
 
         if (FMLEnvironment.getDist() == Dist.CLIENT)
         {
-            NeoForge.EVENT_BUS.addListener(this::AddCountTooltip);
+            NeoForge.EVENT_BUS.addListener(this::addCountTooltip);
         }
     }
 
-    public void ChangeAllStackSizes(ModifyDefaultComponentsEvent event) {
+    public void changeAllStackSizes(ModifyDefaultComponentsEvent event) {
         for (Item item : BuiltInRegistries.ITEM) {
             event.modify(item, builder -> {
                 DataComponentMap components = builder.build();
@@ -44,7 +44,7 @@ public final class StackSizeTweaks {
         }
     }
 
-    public void AddCountTooltip(ItemTooltipEvent event) {
+    public void addCountTooltip(ItemTooltipEvent event) {
         int count = event.getItemStack().getCount();
 
         if (me.timbas.stacksizetweaks.StackSizeTweaks.CONFIG.amountTooltip && count > 999)
