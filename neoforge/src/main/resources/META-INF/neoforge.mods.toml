@@ -39,3 +39,6 @@ config = "stacksizetweaks.mixins.json"
 
 [[mixins]]
 config = "stacksizetweaks.client.mixins.json"
+
+[[mixins]]
+config = "stacksizetweaks.neoforge.mixins.json"
