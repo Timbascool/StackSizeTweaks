@@ -1,12 +1,11 @@
-package me.timbas.stacksizetweaks;
+package me.timbas.stacksizetweaks.config;
 
 
 import com.google.gson.GsonBuilder;
-import dev.isxander.yacl3.api.NameableEnum;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
-import net.minecraft.network.chat.Component;
+import me.timbas.stacksizetweaks.StackSizeTweaks;
 import net.minecraft.resources.Identifier;
 
 import java.nio.file.Path;

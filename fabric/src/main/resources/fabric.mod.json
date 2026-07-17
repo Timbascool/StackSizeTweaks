@@ -23,7 +23,7 @@
       "me.timbas.fabric.stacksizetweaks.StackSizeTweaksClient"
     ],
     "modmenu": [
-      "me.timbas.stacksizetweaks.ModMenuIntegration"
+      "me.timbas.stacksizetweaks.config.ModMenuIntegration"
     ]
   },
   "mixins": [
