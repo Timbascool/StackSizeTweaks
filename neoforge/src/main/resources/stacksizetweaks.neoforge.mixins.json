@@ -8,9 +8,7 @@
   "mixins": [
     "ComponentItemHandlerMixin",
     "EntityEquipmentInvWrapperMixin",
-    "ItemAccessResourceHandlerMixin",
-    "ItemStackHandlerMixin",
-    "ItemStackResourceHandlerMixin"
+    "ItemStackHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
