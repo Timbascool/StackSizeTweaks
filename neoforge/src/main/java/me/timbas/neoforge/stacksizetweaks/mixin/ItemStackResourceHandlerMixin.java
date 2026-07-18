@@ -2,7 +2,6 @@ package me.timbas.neoforge.stacksizetweaks.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import me.timbas.stacksizetweaks.StackSizeTweaks;
-import net.neoforged.neoforge.transfer.item.ItemAccessItemHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.item.ItemStackResourceHandler;
 import org.spongepowered.asm.mixin.Mixin;
