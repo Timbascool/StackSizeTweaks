@@ -8,7 +8,7 @@
   "mixins": [
     "ComponentItemHandlerMixin",
     "EntityEquipmentInvWrapperMixin",
-    "ItemAccessResourceHandler",
+    "ItemAccessResourceHandlerMixin",
     "ItemStackHandlerMixin",
     "ItemStackResourceHandlerMixin"
   ],
