@@ -28,7 +28,7 @@ public class StackSizeTweaksConfig {
     @SerialEntry
     public boolean amountTooltip = true;
 
-    @SerialEntry
+    @SerialEntry(comment = "Font options: \"Vanilla\", \"Small\", \"Tiny\"")
     public FontOption customFont = FontOption.Small;
 
     @SerialEntry
