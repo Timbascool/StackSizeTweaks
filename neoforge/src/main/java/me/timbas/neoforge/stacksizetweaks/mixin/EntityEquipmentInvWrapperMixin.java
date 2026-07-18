@@ -2,7 +2,6 @@ package me.timbas.neoforge.stacksizetweaks.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import me.timbas.stacksizetweaks.StackSizeTweaks;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.neoforged.neoforge.items.wrapper.EntityEquipmentInvWrapper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
