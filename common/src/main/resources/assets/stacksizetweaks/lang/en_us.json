@@ -55,7 +55,7 @@
   "config.stacksizetweaks.logic": "Logic",
 
   "config.stacksizetweaks.vanilla_comparator_amounts": "Vanilla Comparator Amounts",
-  "config.stacksizetweaks.vanilla_comparator_amounts.description": "Use the vanilla stack size of items for comparator comparing.",
+  "config.stacksizetweaks.vanilla_comparator_amounts.description": "Use the vanilla stack size of items for comparator comparing.\n\n(If using Lithium add mixin.block.hopper=false to config/lithium.properties!)",
 
   "config.stacksizetweaks.font_formatting": "Font and Formatting",
 
@@ -71,5 +71,19 @@
   "config.stacksizetweaks.font_option.tiny": "Tiny Font",
 
   "config.stacksizetweaks.shorten_item_amounts": "Aggressive Formatting",
-  "config.stacksizetweaks.shorten_item_amounts.description": "Make item counts show up as short as possible i.e. 300M -> 0.3B, 123K -> 0.1M."
+  "config.stacksizetweaks.shorten_item_amounts.description": "Make item counts show up as short as possible i.e. 300M -> 0.3B, 123K -> 0.1M.",
+
+
+  "config.stacksizetweaks.controls": "Controls",
+
+  "config.stacksizetweaks.pick_up_amount": "Pick up amount",
+  "config.stacksizetweaks.pick_up_amount.description": "Changes the amount picked up for the specific pick up key \n (Doesn't work in creative mode atm)",
+
+  "config.stacksizetweaks.pick_up_percentage": "Pick up percentage",
+  "config.stacksizetweaks.pick_up_percentage.description": "Changes the percentage picked up for the percentage pick up key \n (Doesn't work in creative mode atm)",
+
+
+  "key.category.stacksizetweaks.main": "Stack Size Tweaks",
+  "key.stacksizetweaks.pick_up_amount": "Pick Up Specific Amount",
+  "key.stacksizetweaks.pick_up_percentage": "Pick Up Percentage"
 }

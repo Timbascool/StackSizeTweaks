@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 
 @Mixin(GuiGraphicsExtractor.class)
-public abstract class ItemRendererMixin {
+public abstract class GuiGraphicsExtractorMixin {
 
     @Inject(method = "itemCount", at = @At("HEAD"), cancellable = true)
     private void changeItemCountText(Font font, ItemStack itemStack, int x, int y, @Nullable String countText, CallbackInfo ci) {

@@ -27,6 +27,13 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.stacksizetweaks]]
+modId = "architectury"
+type = "required"
+versionRange = "[${architectury_api_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.stacksizetweaks]]
 modId = "yet_another_config_lib_v3"
 type = "required"
 versionRange = "[${yacl_version},)"

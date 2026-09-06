@@ -43,6 +43,8 @@ dependencies {
 
     common(project(path: ':common')) { transitive = false }
     shadowBundle(project(path: ':common', configuration: 'transformProductionNeoForge')) { transitive = false }
+
+    implementation "dev.architectury:architectury-neoforge:${rootProject.architectury_api_version}"
 }
 
 processResources {
@@ -51,7 +53,8 @@ processResources {
 
             "minecraft_version": project.minecraft_version,
             "neoforge_version" : project.neoforge_version,
-            "yacl_version"     : project.yacl_version
+            "yacl_version"     : project.yacl_version,
+            "architectury_api_version" : project.architectury_api_version
     ]
 
     filesMatching("META-INF/neoforge.mods.toml") {

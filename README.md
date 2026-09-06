@@ -1,7 +1,7 @@
 ### Stack Size Tweaks
 Stack Size Tweaks increases the default stack size of items for a better survival experience.
 
-It let's you change stack sizes up to 2.1 billion using the config.
+It let's you change stack sizes up to 1 billion using the config.
 
 ### Default Stack Sizes
 Categories are ingredients, blocks, food items, items that normally stack to 16, stews, potions, filled buckets, enchanted books and discs
@@ -21,4 +21,9 @@ This mod has a config where you can adjust the stack sizes for different item ca
 
 Editing max stack sizes requires a restart to take effect.
 
-Access the config by using Mod Menu or NeoForge mods sreen, editing the stacksizetweaks.json5 file in the config folder.
+Access the config by using Mod Menu or NeoForge mods sreen or editing the stacksizetweaks.json5 file in the config folder.
+
+### Issues and Compatibility
+Please report any issues you encounter to the Github page.
+
+You may also find fixes for compatibility there.
