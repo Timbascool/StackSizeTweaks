@@ -2,11 +2,12 @@ package me.timbas.stacksizetweaks.mixin;
 
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import me.timbas.stacksizetweaks.StackSizeTweaks;
+import me.timbas.stacksizetweaks.StackSizeHelper;
+import net.minecraft.world.Container;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(net.minecraft.world.Container.class)
+@Mixin(Container.class)
 public interface ContainerMixin {
 
 
@@ -15,6 +16,6 @@ public interface ContainerMixin {
             at = @At("RETURN")
     )
     private int increaseMaxStackSize(int original) {
-        return StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
+        return StackSizeHelper.getContainerMaxStackSize((Container) this);
     }
 }

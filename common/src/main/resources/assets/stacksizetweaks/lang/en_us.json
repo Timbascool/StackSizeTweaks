@@ -54,6 +54,24 @@
 
   "config.stacksizetweaks.logic": "Logic",
 
+  "config.stacksizetweaks.group.containers": "Container Limits",
+  "config.stacksizetweaks.group.containers.description": "Max stack limits for containers (e.g. hoppers, dispensers, droppers for farms and sorters). 0 means default to item max stack size.",
+
+  "config.stacksizetweaks.redstone_container_stack_limit": "Redstone Containers Limit",
+  "config.stacksizetweaks.redstone_container_stack_limit.description": "Global stack limit for all redstone containers (dispensers, droppers, hoppers, crafters). 0 means default to item max stack size.",
+
+  "config.stacksizetweaks.dispenser_stack_limit": "Dispenser Stack Limit",
+  "config.stacksizetweaks.dispenser_stack_limit.description": "Maximum stack size per slot in dispensers. 0 inherits from Redstone Containers Limit.",
+
+  "config.stacksizetweaks.dropper_stack_limit": "Dropper Stack Limit",
+  "config.stacksizetweaks.dropper_stack_limit.description": "Maximum stack size per slot in droppers. 0 inherits from Redstone Containers Limit.",
+
+  "config.stacksizetweaks.hopper_stack_limit": "Hopper Stack Limit",
+  "config.stacksizetweaks.hopper_stack_limit.description": "Maximum stack size per slot in hoppers. 0 inherits from Redstone Containers Limit.",
+
+  "config.stacksizetweaks.crafter_stack_limit": "Crafter Stack Limit",
+  "config.stacksizetweaks.crafter_stack_limit.description": "Maximum stack size per slot in crafters. 0 inherits from Redstone Containers Limit.",
+
   "config.stacksizetweaks.vanilla_comparator_amounts": "Vanilla Comparator Amounts",
   "config.stacksizetweaks.vanilla_comparator_amounts.description": "Use the vanilla stack size of items for comparator comparing.",
 
