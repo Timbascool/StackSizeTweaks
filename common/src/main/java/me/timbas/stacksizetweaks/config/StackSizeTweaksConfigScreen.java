@@ -158,6 +158,53 @@ public class StackSizeTweaksConfigScreen {
                                 .build())
 
                         .group(OptionGroup.createBuilder()
+                                .name(Component.translatable("config.stacksizetweaks.group.containers"))
+                                .description(OptionDescription.of(
+                                        Component.translatable("config.stacksizetweaks.group.containers.description")
+                                ))
+
+                                .option(containerStackSizeOption(
+                                        "config.stacksizetweaks.redstone_container_stack_limit",
+                                        "config.stacksizetweaks.redstone_container_stack_limit.description",
+                                        0,
+                                        () -> config.redstoneContainerStackLimit,
+                                        value -> config.redstoneContainerStackLimit = value
+                                ))
+
+                                .option(containerStackSizeOption(
+                                        "config.stacksizetweaks.dispenser_stack_limit",
+                                        "config.stacksizetweaks.dispenser_stack_limit.description",
+                                        0,
+                                        () -> config.dispenserStackLimit,
+                                        value -> config.dispenserStackLimit = value
+                                ))
+
+                                .option(containerStackSizeOption(
+                                        "config.stacksizetweaks.dropper_stack_limit",
+                                        "config.stacksizetweaks.dropper_stack_limit.description",
+                                        0,
+                                        () -> config.dropperStackLimit,
+                                        value -> config.dropperStackLimit = value
+                                ))
+
+                                .option(containerStackSizeOption(
+                                        "config.stacksizetweaks.hopper_stack_limit",
+                                        "config.stacksizetweaks.hopper_stack_limit.description",
+                                        0,
+                                        () -> config.hopperStackLimit,
+                                        value -> config.hopperStackLimit = value
+                                ))
+
+                                .option(containerStackSizeOption(
+                                        "config.stacksizetweaks.crafter_stack_limit",
+                                        "config.stacksizetweaks.crafter_stack_limit.description",
+                                        0,
+                                        () -> config.crafterStackLimit,
+                                        value -> config.crafterStackLimit = value
+                                ))
+                                .build())
+
+                        .group(OptionGroup.createBuilder()
                                 .name(Component.translatable("config.stacksizetweaks.logic"))
 
                                 .option(boolOption(
@@ -219,6 +266,22 @@ public class StackSizeTweaksConfigScreen {
                 .controller(opt -> IntegerFieldControllerBuilder.create(opt)
                         .range(0, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE))
                 .flag(OptionFlag.GAME_RESTART)
+                .build();
+    }
+
+    private static Option<Integer> containerStackSizeOption(
+            String textKey,
+            String descriptionKey,
+            int defaultValue,
+            java.util.function.Supplier<Integer> getter,
+            java.util.function.Consumer<Integer> setter
+    ) {
+        return Option.<Integer>createBuilder()
+                .name(Component.translatable(textKey))
+                .description(OptionDescription.of(Component.translatable(descriptionKey)))
+                .binding(defaultValue, getter, setter)
+                .controller(opt -> IntegerFieldControllerBuilder.create(opt)
+                        .range(0, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE))
                 .build();
     }
 

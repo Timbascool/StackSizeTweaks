@@ -4,7 +4,12 @@ import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.Container;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.entity.CrafterBlockEntity;
+import net.minecraft.world.level.block.entity.DispenserBlockEntity;
+import net.minecraft.world.level.block.entity.DropperBlockEntity;
+import net.minecraft.world.level.block.entity.HopperBlockEntity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -127,5 +132,33 @@ public class StackSizeHelper {
         }
 
         return map;
+    }
+
+    public static int getContainerMaxStackSize(Container container) {
+        if (StackSizeTweaks.CONFIG == null) {
+            return StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
+        }
+
+        int globalRedstoneLimit = StackSizeTweaks.CONFIG.redstoneContainerStackLimit;
+
+        if (container instanceof DropperBlockEntity) {
+            int limit = StackSizeTweaks.CONFIG.dropperStackLimit;
+            if (limit > 0) return Math.clamp(limit, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
+            if (globalRedstoneLimit > 0) return Math.clamp(globalRedstoneLimit, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
+        } else if (container instanceof DispenserBlockEntity) {
+            int limit = StackSizeTweaks.CONFIG.dispenserStackLimit;
+            if (limit > 0) return Math.clamp(limit, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
+            if (globalRedstoneLimit > 0) return Math.clamp(globalRedstoneLimit, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
+        } else if (container instanceof HopperBlockEntity) {
+            int limit = StackSizeTweaks.CONFIG.hopperStackLimit;
+            if (limit > 0) return Math.clamp(limit, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
+            if (globalRedstoneLimit > 0) return Math.clamp(globalRedstoneLimit, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
+        } else if (container instanceof CrafterBlockEntity) {
+            int limit = StackSizeTweaks.CONFIG.crafterStackLimit;
+            if (limit > 0) return Math.clamp(limit, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
+            if (globalRedstoneLimit > 0) return Math.clamp(globalRedstoneLimit, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
+        }
+
+        return StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
     }
 }

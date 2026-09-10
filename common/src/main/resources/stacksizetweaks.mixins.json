@@ -14,7 +14,9 @@
     "fixes.AnvilMenuMixin",
     "fixes.BucketableMixin",
     "fixes.ContainersMixin",
+    "fixes.CrafterBlockEntityMixin",
     "fixes.FurnaceFuelSlotMixin",
+    "fixes.HopperBlockEntityMixin",
     "fixes.ItemEntityMixin",
     "fixes.SolidBucketItemMixin"
   ],

@@ -37,6 +37,21 @@ public class StackSizeTweaksConfig {
     @SerialEntry
     public boolean vanillaComparatorAmounts = false;
 
+    @SerialEntry(comment = "Global stack limit for all redstone containers (dispensers, droppers, hoppers, crafters). 0 means default to item max stack size.")
+    public int redstoneContainerStackLimit = 0;
+
+    @SerialEntry(comment = "Stack limit for dispensers. 0 inherits from redstoneContainerStackLimit (or item max stack size).")
+    public int dispenserStackLimit = 0;
+
+    @SerialEntry(comment = "Stack limit for droppers. 0 inherits from redstoneContainerStackLimit (or item max stack size).")
+    public int dropperStackLimit = 0;
+
+    @SerialEntry(comment = "Stack limit for hoppers. 0 inherits from redstoneContainerStackLimit (or item max stack size).")
+    public int hopperStackLimit = 0;
+
+    @SerialEntry(comment = "Stack limit for crafters. 0 inherits from redstoneContainerStackLimit (or item max stack size).")
+    public int crafterStackLimit = 0;
+
     @SerialEntry
     public int itemStackLimit = 512;
 
