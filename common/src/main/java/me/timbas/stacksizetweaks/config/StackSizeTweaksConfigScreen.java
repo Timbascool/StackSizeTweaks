@@ -240,7 +240,7 @@ public class StackSizeTweaksConfigScreen {
                 .description(OptionDescription.of(Component.translatable(descriptionKey)))
                 .binding(defaultValue, getter, setter)
                 .controller(opt -> IntegerFieldControllerBuilder.create(opt)
-                        .range(0, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE))
+                        .range(-1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE))
                 .flag(OptionFlag.GAME_RESTART)
                 .build();
     }

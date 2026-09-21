@@ -104,8 +104,12 @@ public class StackSizeHelper {
         }
 
 
-        // 0 in config means max possible stack size
-        if (newStackSize == 0) return StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
+        // -1 in config means max possible stack size 0 means default
+        if (maxStackSize != null && newStackSize == 0)
+        {
+            newStackSize = maxStackSize;
+        }
+        if (newStackSize < 0) newStackSize = StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
 
         return Math.clamp(newStackSize, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
     }
