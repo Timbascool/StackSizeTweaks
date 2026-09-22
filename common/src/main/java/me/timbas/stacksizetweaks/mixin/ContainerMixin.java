@@ -9,8 +9,6 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(Container.class)
 public interface ContainerMixin {
-
-
     @ModifyReturnValue(
             method = "getMaxStackSize()I",
             at = @At("RETURN")
