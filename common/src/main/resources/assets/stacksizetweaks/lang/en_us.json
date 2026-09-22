@@ -52,6 +52,9 @@
   "config.stacksizetweaks.overrides": "Overrides",
   "config.stacksizetweaks.overrides.description": "Change stack sizes for specific items.\nFormat: minecraft:example_item=64",
 
+  "config.stacksizetweaks.container_overrides": "Container Overrides",
+  "config.stacksizetweaks.container_overrides.description": "Change stack sizes for specific containers.\nFormat: minecraft:example_container=64",
+
   "config.stacksizetweaks.logic": "Logic",
 
   "config.stacksizetweaks.vanilla_comparator_amounts": "Vanilla Comparator Amounts",

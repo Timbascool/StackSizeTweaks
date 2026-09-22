@@ -80,6 +80,12 @@ public class StackSizeTweaksConfig {
     ));
 
     @SerialEntry
+    public List<String> containerOverrides = new ArrayList<>(List.of(
+            "minecraft:example_container=64",
+            "minecraft:hopper=64"
+    ));
+
+    @SerialEntry
     public int pickUpAmount = 64;
 
     @SerialEntry

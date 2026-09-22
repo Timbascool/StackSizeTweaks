@@ -210,7 +210,7 @@ public class StackSizeTweaksConfigScreen {
                                 ))
 
                                 .binding(
-                                        List.of("minecraft:example_item=64"),
+                                        List.of(),
                                         () -> HANDLER.instance().overrides,
                                         value -> HANDLER.instance().overrides = value
                                 )
@@ -219,6 +219,63 @@ public class StackSizeTweaksConfigScreen {
                                 .flag(OptionFlag.GAME_RESTART)
                                 .build())
 
+                        .option(ListOption.<String>createBuilder()
+                                .name(Component.translatable("config.stacksizetweaks.container_overrides"))
+
+                                .description(OptionDescription.of(
+                                        Component.translatable("config.stacksizetweaks.container_overrides.description")
+                                ))
+
+                                .binding(
+                                        List.of(),
+                                        () -> HANDLER.instance().containerOverrides,
+                                        value -> HANDLER.instance().containerOverrides = value
+                                )
+                                .controller(StringControllerBuilder::create)
+                                .initial("")
+                                .build())
+
+
+                        .group(OptionGroup.createBuilder()
+                                .name(Component.translatable("config.stacksizetweaks.logic"))
+
+                                .option(boolOption(
+                                        "config.stacksizetweaks.vanilla_comparator_amounts",
+                                            "config.stacksizetweaks.vanilla_comparator_amounts.description",
+                                        false,
+                                        () -> config.vanillaComparatorAmounts,
+                                        value -> config.vanillaComparatorAmounts = value
+
+                                ))
+                                .build())
+
+
+                        .group(OptionGroup.createBuilder()
+                                .name(Component.translatable("config.stacksizetweaks.font_formatting"))
+
+                                .option(boolOption(
+                                        "config.stacksizetweaks.amount_tooltip",
+                                        "config.stacksizetweaks.amount_tooltip.description",
+                                        true,
+                                        () -> config.amountTooltip,
+                                        value -> config.amountTooltip = value
+                                ))
+
+                                .option(Option.<FontOption>createBuilder()
+                                        .name(Component.translatable("config.stacksizetweaks.font_option"))
+                                        .description(OptionDescription.of(Component.translatable("config.stacksizetweaks.font_option.description")))
+                                        .binding(FontOption.Small, () -> config.customFont, value -> config.customFont = value)
+                                        .controller(opt -> EnumControllerBuilder.create(opt).enumClass(FontOption.class))
+                                        .build())
+
+                                .option(boolOption(
+                                        "config.stacksizetweaks.shorten_item_amounts",
+                                        "config.stacksizetweaks.shorten_item_amounts.description",
+                                        true,
+                                        () -> config.shortenItemAmounts,
+                                        value -> config.shortenItemAmounts = value
+                                ))
+                                .build())
                         .build())
 
 

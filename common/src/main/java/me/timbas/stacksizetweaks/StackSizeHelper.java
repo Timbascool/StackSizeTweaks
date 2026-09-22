@@ -4,7 +4,9 @@ import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.Container;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.entity.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.Map;
 public class StackSizeHelper {
 
     public static Map<String, Integer> overridesMap = new HashMap<>();
+    public static Map<String, Integer> containerOverridesMap = new HashMap<>();
 
     public static int getMaxStackSize(Item item, DataComponentMap components) {
         // Exceptions
@@ -142,5 +145,24 @@ public class StackSizeHelper {
         }
 
         return map;
+    }
+
+    public static int getContainerMaxStackSize(Container container) {
+        if (StackSizeTweaks.CONFIG == null) {
+            return StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
+        }
+
+        if (container instanceof BlockEntity blockEntity)
+        {
+            Identifier id = BuiltInRegistries.BLOCK_ENTITY_TYPE.getKey(blockEntity.getType());
+
+            if (id != null && containerOverridesMap.containsKey(id.toString())) {
+                int limit = containerOverridesMap.get(id.toString());
+
+                if (limit > 0) return Math.clamp(limit, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
+            }
+        }
+
+        return StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
     }
 }

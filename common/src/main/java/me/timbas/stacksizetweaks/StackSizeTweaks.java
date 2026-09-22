@@ -20,7 +20,9 @@ public final class StackSizeTweaks {
 
         StackSizeTweaksConfig.HANDLER.load();
         CONFIG = StackSizeTweaksConfig.HANDLER.instance();
+
         StackSizeHelper.overridesMap = StackSizeHelper.mapFromOverrides(CONFIG.overrides);
+        StackSizeHelper.containerOverridesMap = StackSizeHelper.mapFromOverrides(CONFIG.containerOverrides);
 
         NetworkManager.registerReceiver(NetworkManager.Side.C2S,
                 PickUpAmountPayload.TYPE, PickUpAmountPayload.CODEC,
