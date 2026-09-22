@@ -16,11 +16,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 
 @Mixin(GuiGraphicsExtractor.class)
-public abstract class ItemRendererMixin {
+public abstract class GuiGraphicsExtractorMixin {
 
     @Inject(method = "itemCount", at = @At("HEAD"), cancellable = true)
     private void changeItemCountText(Font font, ItemStack itemStack, int x, int y, @Nullable String countText, CallbackInfo ci) {
-        if (itemStack.getCount() != 1 || countText != null) {
+
+        if (countText != null) return;
+
+        if (itemStack.getCount() != 1) {
             String newText = stacksizetweaks$formatCount(itemStack.getCount(), StackSizeTweaks.CONFIG.shortenItemAmounts);
             Component renderedText = stacksizetweaks$makeText(newText, StackSizeTweaks.CONFIG.customFont);
 

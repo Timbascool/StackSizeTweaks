@@ -90,8 +90,15 @@ public class StackSizeTweaksConfig {
 
     @SerialEntry
     public List<String> overrides = new ArrayList<>(List.of(
-            "minecraft:example_item=64"
+            "minecraft:example_item=64",
+            "minecraft:cake=8"
     ));
+
+    @SerialEntry
+    public int pickUpAmount = 64;
+
+    @SerialEntry
+    public int pickUpPercentage = 25;
 }
 
 

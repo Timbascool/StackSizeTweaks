@@ -9,6 +9,9 @@ public class StackSizeTweaksClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+
+        me.timbas.stacksizetweaks.StackSizeTweaks.clientInit();
+
         ItemTooltipCallback.EVENT.register((stack, context, tooltipType, lines) -> {
             int count = stack.getCount();
 

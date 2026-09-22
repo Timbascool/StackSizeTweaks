@@ -109,8 +109,12 @@ public class StackSizeHelper {
         }
 
 
-        // 0 in config means max possible stack size
-        if (newStackSize == 0) return StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
+        // -1 in config means max possible stack size 0 means default
+        if (maxStackSize != null && newStackSize == 0)
+        {
+            newStackSize = maxStackSize;
+        }
+        if (newStackSize < 0) newStackSize = StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE;
 
         return Math.clamp(newStackSize, 1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE);
     }
@@ -120,15 +124,26 @@ public class StackSizeHelper {
     public static Map<String, Integer> mapFromOverrides(List<String> overrides) {
 
         Map<String, Integer> map = new HashMap<>();
+        if (overrides == null) return map;
 
         for (String entry : overrides) {
+
+            if (entry == null || entry.isBlank()) continue;
+
             String[] parts = entry.split("=", 2);
-            if (parts.length < 2) continue;
+            if (parts.length < 2) {
+                StackSizeTweaks.LOGGER.warn("StackSizeTweaks override entry is longer than 2: {}", entry);
+            }
 
             String id = parts[0];
-            int value = Integer.parseInt(parts[1].trim());
 
-            map.put(id, value);
+            try {
+                int value = Integer.parseInt(parts[1].trim());
+                map.put(id, value);
+            }
+            catch (NumberFormatException e) {
+                StackSizeTweaks.LOGGER.warn("Couldn't parse StackSizeTweaks override entry: {}", entry);
+            }
         }
 
         return map;

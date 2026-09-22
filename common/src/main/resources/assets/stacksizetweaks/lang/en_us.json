@@ -3,7 +3,7 @@
 
   "config.stacksizetweaks.category.general": "Stack Size Tweaks",
 
-  "config.stacksizetweaks.label.info": "Change the default stack size of items.\n\nUse 0 for max stack size (1,000,000,000).\n\nChanges to stack sizes require a restart to take effect.",
+  "config.stacksizetweaks.label.info": "Change the default stack size of items.\n\nUse -1 for max stack size (1,000,000,000) and 0 for default.\n\nChanges to stack sizes require a restart to take effect.",
 
   "config.stacksizetweaks.group.item_groups": "Item Groups",
   "config.stacksizetweaks.group.item_groups.description": "Max stack sizes for different item groups",
@@ -73,7 +73,7 @@
   "config.stacksizetweaks.crafter_stack_limit.description": "Maximum stack size per slot in crafters. 0 inherits from Redstone Containers Limit.",
 
   "config.stacksizetweaks.vanilla_comparator_amounts": "Vanilla Comparator Amounts",
-  "config.stacksizetweaks.vanilla_comparator_amounts.description": "Use the vanilla stack size of items for comparator comparing.",
+  "config.stacksizetweaks.vanilla_comparator_amounts.description": "Use the vanilla stack size of items for comparator comparing.\n\n(If using Lithium add mixin.block.hopper=false to config/lithium.properties!)",
 
   "config.stacksizetweaks.font_formatting": "Font and Formatting",
 
@@ -89,5 +89,19 @@
   "config.stacksizetweaks.font_option.tiny": "Tiny Font",
 
   "config.stacksizetweaks.shorten_item_amounts": "Aggressive Formatting",
-  "config.stacksizetweaks.shorten_item_amounts.description": "Make item counts show up as short as possible i.e. 300M -> 0.3B, 123K -> 0.1M."
+  "config.stacksizetweaks.shorten_item_amounts.description": "Make item counts show up as short as possible i.e. 300M -> 0.3B, 123K -> 0.1M.",
+
+
+  "config.stacksizetweaks.controls": "Controls",
+
+  "config.stacksizetweaks.pick_up_amount": "Pick up amount",
+  "config.stacksizetweaks.pick_up_amount.description": "Changes the amount picked up for the specific pick up key \n (Doesn't work in creative mode atm)",
+
+  "config.stacksizetweaks.pick_up_percentage": "Pick up percentage",
+  "config.stacksizetweaks.pick_up_percentage.description": "Changes the percentage picked up for the percentage pick up key \n (Doesn't work in creative mode atm)",
+
+
+  "key.category.stacksizetweaks.main": "Stack Size Tweaks",
+  "key.stacksizetweaks.pick_up_amount": "Pick Up Specific Amount",
+  "key.stacksizetweaks.pick_up_percentage": "Pick Up Percentage"
 }

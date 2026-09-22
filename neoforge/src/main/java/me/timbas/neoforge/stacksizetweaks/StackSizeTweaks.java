@@ -1,6 +1,7 @@
 package me.timbas.neoforge.stacksizetweaks;
 
 import me.timbas.stacksizetweaks.StackSizeHelper;
+import me.timbas.stacksizetweaks.config.StackSizeTweaksConfigScreen;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
@@ -9,8 +10,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
@@ -19,12 +22,20 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 public final class StackSizeTweaks {
     public StackSizeTweaks(IEventBus modBus) {
 
+        me.timbas.stacksizetweaks.StackSizeTweaks.init();
         if (FMLEnvironment.getDist() == Dist.CLIENT)
         {
-            StackSizeTweaksClient.ClientInit();
-        }
+            me.timbas.stacksizetweaks.StackSizeTweaks.clientInit();
 
-        me.timbas.stacksizetweaks.StackSizeTweaks.init();
+            StackSizeTweaksClient.ClientInit();
+
+            ModLoadingContext.get().registerExtensionPoint(
+                    IConfigScreenFactory.class,
+                    () -> (client, parent) -> StackSizeTweaksConfigScreen.createScreen(parent)
+            );
+
+            NeoForge.EVENT_BUS.addListener(this::addCountTooltip);
+        }
 
         modBus.addListener(this::changeAllStackSizes);
 

@@ -25,11 +25,73 @@ public class StackSizeTweaksConfigScreen {
                 .category(ConfigCategory.createBuilder()
                         .name(Component.translatable("config.stacksizetweaks.category.general"))
 
-                        .option(LabelOption.create(
-                                Component.translatable("config.stacksizetweaks.label.info")
-                        ))
+                        .group(OptionGroup.createBuilder()
+                                .name(Component.translatable("config.stacksizetweaks.font_formatting"))
+
+                                .option(boolOption(
+                                        "config.stacksizetweaks.amount_tooltip",
+                                        "config.stacksizetweaks.amount_tooltip.description",
+                                        true,
+                                        () -> config.amountTooltip,
+                                        value -> config.amountTooltip = value
+                                ))
+
+                                .option(Option.<FontOption>createBuilder()
+                                        .name(Component.translatable("config.stacksizetweaks.font_option"))
+                                        .description(OptionDescription.of(Component.translatable("config.stacksizetweaks.font_option.description")))
+                                        .binding(FontOption.Small, () -> config.customFont, value -> config.customFont = value)
+                                        .controller(opt -> EnumControllerBuilder.create(opt).enumClass(FontOption.class))
+                                        .build())
+
+                                .option(boolOption(
+                                        "config.stacksizetweaks.shorten_item_amounts",
+                                        "config.stacksizetweaks.shorten_item_amounts.description",
+                                        true,
+                                        () -> config.shortenItemAmounts,
+                                        value -> config.shortenItemAmounts = value
+                                ))
+                                .build())
 
                         .group(OptionGroup.createBuilder()
+                                .name(Component.translatable("config.stacksizetweaks.controls"))
+
+                                .option(amountOption(
+                                        "config.stacksizetweaks.pick_up_amount",
+                                        "config.stacksizetweaks.pick_up_amount.description",
+                                        64,
+                                        () -> config.pickUpAmount,
+                                        value -> config.pickUpAmount = value
+                                ))
+
+                                .option(percentageOption(
+                                        "config.stacksizetweaks.pick_up_percentage",
+                                        "config.stacksizetweaks.pick_up_percentage.description",
+                                        25,
+                                        () -> config.pickUpPercentage,
+                                        value -> config.pickUpPercentage = value
+                                ))
+                                .build())
+
+
+                        .group(OptionGroup.createBuilder()
+                                .name(Component.translatable("config.stacksizetweaks.logic"))
+
+                                .option(boolOption(
+                                        "config.stacksizetweaks.vanilla_comparator_amounts",
+                                        "config.stacksizetweaks.vanilla_comparator_amounts.description",
+                                        false,
+                                        () -> config.vanillaComparatorAmounts,
+                                        value -> config.vanillaComparatorAmounts = value
+
+                                ))
+                                .build())
+
+
+                        .group(OptionGroup.createBuilder()
+                                .option(LabelOption.create(
+                                        Component.translatable("config.stacksizetweaks.label.info")
+                                ))
+
                                 .name(Component.translatable("config.stacksizetweaks.group.item_groups"))
                                 .description(OptionDescription.of(
                                         Component.translatable("config.stacksizetweaks.group.item_groups.description")
@@ -246,6 +308,7 @@ public class StackSizeTweaksConfigScreen {
                                 .build())
                         .build())
 
+
                 .save(HANDLER::save)
                 .build()
                 .generateScreen(parent);
@@ -264,7 +327,7 @@ public class StackSizeTweaksConfigScreen {
                 .description(OptionDescription.of(Component.translatable(descriptionKey)))
                 .binding(defaultValue, getter, setter)
                 .controller(opt -> IntegerFieldControllerBuilder.create(opt)
-                        .range(0, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE))
+                        .range(-1, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE))
                 .flag(OptionFlag.GAME_RESTART)
                 .build();
     }
@@ -297,6 +360,38 @@ public class StackSizeTweaksConfigScreen {
                 .description(OptionDescription.of(Component.translatable(descriptionKey)))
                 .binding(defaultValue, getter, setter)
                 .controller(TickBoxControllerBuilder::create)
+                .build();
+    }
+
+    private static Option<Integer> amountOption(
+            String textKey,
+            String descriptionKey,
+            int defaultValue,
+            java.util.function.Supplier<Integer> getter,
+            java.util.function.Consumer<Integer> setter
+    ) {
+        return Option.<Integer>createBuilder()
+                .name(Component.translatable(textKey))
+                .description(OptionDescription.of(Component.translatable(descriptionKey)))
+                .binding(defaultValue, getter, setter)
+                .controller(opt -> IntegerFieldControllerBuilder.create(opt)
+                        .range(0, StackSizeTweaks.ABSOLUTE_MAX_STACK_SIZE))
+                .build();
+    }
+
+    private static Option<Integer> percentageOption(
+            String textKey,
+            String descriptionKey,
+            int defaultValue,
+            java.util.function.Supplier<Integer> getter,
+            java.util.function.Consumer<Integer> setter
+    ) {
+        return Option.<Integer>createBuilder()
+                .name(Component.translatable(textKey))
+                .description(OptionDescription.of(Component.translatable(descriptionKey)))
+                .binding(defaultValue, getter, setter)
+                .controller(opt -> IntegerFieldControllerBuilder.create(opt)
+                        .range(0, 100))
                 .build();
     }
 }

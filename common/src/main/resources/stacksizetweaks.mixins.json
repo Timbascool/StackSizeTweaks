@@ -11,6 +11,7 @@
     "ItemStackMixin",
     "ItemStackTemplateMixin",
     "fixes.AbstractContainerMenuMixin",
+    "fixes.AbstractFurnaceBlockEntityMixin",
     "fixes.AnvilMenuMixin",
     "fixes.BucketableMixin",
     "fixes.ContainersMixin",
