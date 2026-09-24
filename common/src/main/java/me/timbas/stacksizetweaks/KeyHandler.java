@@ -5,11 +5,13 @@ import dev.architectury.event.events.client.ClientScreenInputEvent;
 import dev.architectury.networking.NetworkManager;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import me.timbas.stacksizetweaks.client.mixin.AbstractContainerScreenAccessor;
+import me.timbas.stacksizetweaks.network.PayLoadHandler;
 import me.timbas.stacksizetweaks.network.PickUpAmountPayload;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -52,16 +54,12 @@ public class KeyHandler {
         });
     }
 
-    public static void handleInput(Minecraft minecraft, Screen screen, boolean pressedPickUpAmount, boolean pressedPickUpPercentage)
-    {
+    public static void handleInput(Minecraft minecraft, Screen screen, boolean pressedPickUpAmount, boolean pressedPickUpPercentage) {
         if (!pressedPickUpAmount && !pressedPickUpPercentage) return;
 
         Player player = minecraft.player;
 
         if (player == null) return;
-
-        // Doesn't work in creative idk
-        if (player.isCreative()) return;
 
         AbstractContainerMenu menu = player.containerMenu;
 
@@ -71,10 +69,7 @@ public class KeyHandler {
         if (slot == null) return;
 
 
-        int slotIndex = slot.index;
-
-        StackSizeTweaks.LOGGER.info("{}", slotIndex);
-
+        int slotIndex = menu.slots.indexOf(slot);
 
         ItemStack carried = menu.getCarried();
         ItemStack clicked = slot.getItem();
@@ -111,7 +106,9 @@ public class KeyHandler {
 
         if (amount <= 0) return;
 
-        if (NetworkManager.canServerReceive(PickUpAmountPayload.TYPE)) {
+        if (screen instanceof CreativeModeInventoryScreen) {
+            PayLoadHandler.handlePickUpClient(player, slotIndex, amount, menu.containerId);
+        } else if (NetworkManager.canServerReceive(PickUpAmountPayload.TYPE)) {
             NetworkManager.sendToServer(new PickUpAmountPayload(slotIndex, amount, menu.containerId));
         }
     }
