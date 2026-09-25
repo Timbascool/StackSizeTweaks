@@ -2,6 +2,7 @@ package me.timbas.stacksizetweaks.mixin.fixes;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +25,7 @@ public class SolidBucketItemMixin {
             ItemStack emptyBucket = new ItemStack(Items.BUCKET);
 
             if (!player.getInventory().add(emptyBucket)) {
-                player.drop(emptyBucket, false);
+                player.drop(emptyBucket, false, Prediction.SERVER_ONLY);
             }
             return;
         }
