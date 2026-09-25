@@ -82,7 +82,7 @@ public class KeyHandler {
             amount = StackSizeTweaks.CONFIG.pickUpAmount;
         } else if (pressedPickUpPercentage) {
             ItemStack reference = emptySlot ? carried : clicked;
-            amount = (int) Math.ceil((reference.getCount() * StackSizeTweaks.CONFIG.pickUpPercentage / 100f));
+            amount = (int) Math.ceil((double) reference.getCount() * StackSizeTweaks.CONFIG.pickUpPercentage / 100.0);
         }
 
         if (emptySlot) {
