@@ -4,7 +4,6 @@ import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.entity.*;
@@ -81,7 +80,7 @@ public class StackSizeHelper {
             newStackSize = StackSizeTweaks.CONFIG.vehicleStackLimit;
         }
         // Beds
-        else if (item instanceof BlockItem blockItem && blockItem.getBlock().defaultBlockState().is(BlockTags.BEDS))
+        else if (item instanceof BedItem)
         {
             newStackSize = StackSizeTweaks.CONFIG.bedStackLimit;
         }

@@ -6,7 +6,10 @@
   "client": [
   ],
   "mixins": [
+    "ComponentItemHandlerMixin",
+    "EntityEquipmentInvWrapperMixin",
     "ItemAccessResourceHandlerMixin",
+    "ItemStackHandlerMixin",
     "ItemStackResourceHandlerMixin"
   ],
   "injectors": {

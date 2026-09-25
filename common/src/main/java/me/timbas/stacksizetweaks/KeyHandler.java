@@ -1,6 +1,5 @@
 package me.timbas.stacksizetweaks;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import dev.architectury.event.EventResult;
 import dev.architectury.event.events.client.ClientScreenInputEvent;
 import dev.architectury.networking.NetworkManager;
@@ -18,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import org.lwjgl.glfw.GLFW;
 
 public class KeyHandler {
 
@@ -25,13 +25,13 @@ public class KeyHandler {
 
     public static final KeyMapping PICK_UP_AMOUNT = new KeyMapping(
             "key.stacksizetweaks.pick_up_amount",
-            InputConstants.UNKNOWN.getValue(),
+            GLFW.GLFW_KEY_UNKNOWN,
             KEY_CATEGORY
     );
 
     public static final KeyMapping PICK_UP_PERCENTAGE = new KeyMapping(
             "key.stacksizetweaks.pick_up_percentage",
-            InputConstants.UNKNOWN.getValue(),
+            GLFW.GLFW_KEY_UNKNOWN,
             KEY_CATEGORY
     );
 
